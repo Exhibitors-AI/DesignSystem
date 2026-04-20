@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Tighter integration: E arms extend into the first chevron's space. Chevrons are thinner, more integrated. -->
+  <rect x="8" y="8" width="7" height="48" fill="#2a9d8f"/>
+  <rect x="8" y="8" width="24" height="7" fill="#2a9d8f"/>
+  <rect x="8" y="28.5" width="20" height="7" fill="#2a9d8f"/>
+  <rect x="8" y="49" width="24" height="7" fill="#2a9d8f"/>
+  <!-- Chevrons slightly overlapping the E arms -->
+  <polyline points="28,14 42,32 28,50" fill="none" stroke="#2a9d8f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="40,14 54,32 40,50" fill="none" stroke="#2a9d8f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

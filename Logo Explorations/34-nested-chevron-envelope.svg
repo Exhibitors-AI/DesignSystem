@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- The envelope IS two nested chevrons. No rectangle body. Just two V shapes at different scales, the outer one with a flat bottom connecting them. Minimal, reads as both envelope and double chevron. -->
+  <!-- Outer chevron with connected base -->
+  <path d="
+    M6,18 L32,40 L58,18
+    M6,18 L6,50 Q6,54 10,54 L54,54 Q58,54 58,50 L58,18
+  " fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Inner chevron (smaller, nested) -->
+  <polyline points="16,24 32,36 48,24" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

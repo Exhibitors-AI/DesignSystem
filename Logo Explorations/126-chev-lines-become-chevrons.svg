@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- All three lines bend into subtle right-pointing chevrons. -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
+  <polyline points="16,14 42,18 48,14" fill="none" stroke="#faf8f4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="16,30 38,32 42,30" fill="none" stroke="#faf8f4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="16,46 42,50 48,46" fill="none" stroke="#faf8f4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

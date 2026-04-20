@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Each line ends with a small chevron tick. Subtle forward gesture on every line. -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
+  <path d="M16,18 L42,18 L48,14" fill="none" stroke="#faf8f4" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16,32 L38,32 L44,28" fill="none" stroke="#faf8f4" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16,46 L42,46 L48,42" fill="none" stroke="#faf8f4" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

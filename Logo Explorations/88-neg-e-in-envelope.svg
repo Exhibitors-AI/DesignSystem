@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Filled envelope shape. The e appears in negative space within the body. -->
+  <rect x="6" y="14" width="52" height="36" rx="6" fill="#2a9d8f"/>
+  <polyline points="6,16 32,36 58,16" fill="none" stroke="#faf8f4" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M38,36 L24,36 Q20,36 20,32 Q20,26 30,26 Q40,26 40,36 Q40,44 30,46 Q24,46 22,42" fill="none" stroke="#faf8f4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

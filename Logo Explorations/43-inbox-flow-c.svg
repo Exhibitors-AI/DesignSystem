@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Simplified single-line approach. The envelope is a tilted diamond. Three bars connect to its left point. One continuous path traces: top bar → left point → bottom bar → back to left point → envelope diamond → flap. -->
+  <path d="
+    M4,18 L20,18
+    L20,32
+    L4,32 L20,32
+    L4,46 L20,46
+    L20,32
+    L20,56 L50,32 L20,8 L20,18
+  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Flap inner line -->
+  <path d="M24,12 L50,32 L24,52" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

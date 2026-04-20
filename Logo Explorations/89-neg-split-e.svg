@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Two teal halves with a white e-shaped gap between them. -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
+  <path d="M46,30 L18,30 Q10,30 10,20 Q10,4 32,4 L60,4 L60,30 L60,60 L32,60 Q10,56 10,40" fill="#faf8f4" stroke="none"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="#2a9d8f" stroke-width="0"/>
+  <path d="M46,30 L18,30 Q12,30 12,22 Q12,8 32,8 Q52,8 52,30 Q52,52 32,56 Q18,58 12,44" fill="none" stroke="#faf8f4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

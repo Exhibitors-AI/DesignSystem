@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Purest single line. One path draws the entire mark as a single continuous stroke: starts at top-left bar, zigzags down through the three bars, then sweeps into the diamond envelope and traces the flap. The zigzag of the bars flows naturally into the angular envelope. -->
+  <path d="
+    M4,18 L20,18
+    L4,32 L20,32
+    L4,46 L20,46
+    L20,56 L52,32 L20,8 L20,18
+  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exhibitors.ai — Dashboard V2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --primary: #2a9d8f; --primary-hover: #249185; --primary-light: #e0f3f0;
+    --clay: #c2783a; --clay-light: #f5ece0;
+    --sage: #3d9960; --sage-light: #e2f2e6;
+    --slate: #6882a0; --slate-light: #e8edf3;
+    --ink: #1a1a1a; --ink-secondary: #444; --ink-muted: #777; --ink-subtle: #aaa;
+    --bg-page: #faf8f4; --bg-warm: #f5efe6; --bg-card: #fff;
+    --border: #e0dbd2; --border-light: #efece6;
+    --nav-bg: #1a1a1a; --nav-hover: #2a2a2a;
+    --error: #c25050;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --shadow-1: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-2: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-sans); background: var(--bg-page); color: var(--ink); -webkit-font-smoothing: antialiased; display: flex; min-height: 100vh; }
+
+  /* ── Sidebar ── */
+  .sidebar { width: 220px; background: var(--nav-bg); color: #999; padding: 20px 12px; display: flex; flex-direction: column; flex-shrink: 0; min-height: 100vh; position: fixed; top: 0; left: 0; bottom: 0; }
+  .brand { display: flex; align-items: center; gap: 10px; padding: 0 12px 20px; border-bottom: 1px solid #2a2a2a; margin-bottom: 16px; }
+  .brand-icon { width: 32px; height: 32px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700; }
+  .brand-name { font-family: var(--font-serif); font-size: 16px; font-weight: 300; color: #fff; }
+  .nav-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #555; padding: 8px 12px 4px; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: all 0.15s ease; color: #999; }
+  .nav-item:hover { background: var(--nav-hover); color: #ccc; }
+  .nav-item.active { background: var(--nav-hover); color: #fff; }
+  .nav-icon { width: 18px; height: 18px; border-radius: 3px; background: currentColor; opacity: 0.4; flex-shrink: 0; }
+  .nav-item.active .nav-icon { opacity: 0.8; }
+  .sidebar-spacer { flex: 1; }
+  .user-section { padding: 16px 12px; border-top: 1px solid #2a2a2a; display: flex; align-items: center; gap: 10px; }
+  .user-avatar { width: 28px; height: 28px; border-radius: 50%; background: #444; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #ccc; }
+  .user-name { font-size: 12px; color: #ccc; }
+  .user-org { font-size: 10px; color: #666; }
+
+  /* ── Main Content ── */
+  .main { flex: 1; padding: 40px 48px; margin-left: 220px; }
+  .page-header { margin-bottom: 32px; }
+  .page-title { font-family: var(--font-serif); font-size: 36px; font-weight: 400; letter-spacing: -0.01em; }
+  .page-subtitle { font-size: 14px; color: var(--ink-muted); margin-top: 4px; }
+
+  /* ── Bento Grid ── */
+  .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+  .card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; padding: 24px; transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: var(--shadow-2); }
+
+  /* ── Metric Cards ── */
+  .metric { grid-column: span 3; }
+  .metric-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .metric-value { font-family: var(--font-serif); font-size: 48px; font-weight: 400; letter-spacing: -0.02em; line-height: 1; }
+  .metric-change { font-size: 12px; font-weight: 500; margin-top: 8px; }
+  .up { color: var(--sage); }
+  .down { color: var(--error); }
+  .metric-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* ── Activity ── */
+  .activity { grid-column: span 8; }
+  .card-title { font-family: var(--font-serif); font-size: 18px; font-weight: 400; margin-bottom: 16px; letter-spacing: -0.01em; }
+  .activity-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border-light); }
+  .activity-item:last-child { border-bottom: none; }
+  .activity-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .activity-text { font-size: 13px; color: var(--ink-secondary); line-height: 1.5; }
+  .activity-text strong { color: var(--ink); font-weight: 500; }
+  .activity-time { font-size: 11px; color: var(--ink-subtle); margin-left: auto; white-space: nowrap; flex-shrink: 0; }
+
+  /* ── Quick Actions ── */
+  .actions { grid-column: span 4; }
+  .action-btn { display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-card); font-size: 13px; font-weight: 500; color: var(--ink-secondary); cursor: pointer; margin-bottom: 8px; transition: all 0.15s ease; }
+  .action-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+  .action-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+
+  /* ── Chart ── */
+  .chart-card { grid-column: span 7; }
+  .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 120px; margin-top: 16px; }
+  .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bar { width: 100%; border-radius: 4px 4px 0 0; transition: all 0.2s ease; }
+  .bar-label { font-size: 10px; color: var(--ink-subtle); }
+
+  /* ── Calendar ── */
+  .calendar-card { grid-column: span 5; }
+  .show-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-light); }
+  .show-item:last-child { border-bottom: none; }
+  .show-date { width: 44px; height: 44px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+  .show-date .month { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .show-date .day { font-size: 18px; font-weight: 600; line-height: 1; }
+  .show-info .show-name { font-size: 13px; font-weight: 500; }
+  .show-info .show-location { font-size: 11px; color: var(--ink-muted); }
+  .show-badge { font-size: 9px; font-weight: 600; padding: 2px 8px; border-radius: 3px; margin-left: auto; text-transform: uppercase; letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+
+<!-- ═══ Sidebar ═══ -->
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-icon">E</div>
+    <div class="brand-name">Exhibitors</div>
+  </div>
+  <div class="nav-label">Main</div>
+  <div class="nav-item active"><div class="nav-icon"></div>Dashboard</div>
+  <div class="nav-item"><div class="nav-icon"></div>Lists</div>
+  <div class="nav-item"><div class="nav-icon"></div>Contacts</div>
+  <div class="nav-item"><div class="nav-icon"></div>Emails</div>
+  <div class="nav-label" style="margin-top:16px;">Settings</div>
+  <div class="nav-item"><div class="nav-icon"></div>Profiles</div>
+  <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+  <div class="sidebar-spacer"></div>
+  <div class="user-section">
+    <div class="user-avatar">CL</div>
+    <div><div class="user-name">Chris L.</div><div class="user-org">Exhibitors.ai</div></div>
+  </div>
+</nav>
+
+<!-- ═══ Main ═══ -->
+<div class="main">
+  <div class="page-header">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-subtitle">Welcome back, Chris</p>
+  </div>
+
+  <div class="bento">
+    <!-- Metrics Row -->
+    <div class="card metric">
+      <div class="metric-label"><div class="metric-dot" style="background:var(--primary);"></div>Emails Generated</div>
+      <div class="metric-value" style="color:var(--primary);">247</div>
+      <div class="metric-change up">+18% from last week</div>
+    </div>
+    <div class="card metric">
+      <div class="metric-label"><div class="metric-dot" style="background:var(--ink-muted);"></div>Total Contacts</div>
+      <div class="metric-value">1,843</div>
+      <div class="metric-change up">+32% from last week</div>
+    </div>
+    <div class="card metric">
+      <div class="metric-label"><div class="metric-dot" style="background:var(--slate);"></div>Active Lists</div>
+      <div class="metric-value">12</div>
+      <div class="metric-change up">+2 new</div>
+    </div>
+    <div class="card metric">
+      <div class="metric-label"><div class="metric-dot" style="background:var(--sage);"></div>Activation Rate</div>
+      <div class="metric-value" style="color:var(--sage);">68%</div>
+      <div class="metric-change up">+5% from baseline</div>
+    </div>
+
+    <!-- Activity + Quick Actions -->
+    <div class="card activity">
+      <div class="card-title">Recent Activity</div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background:var(--primary);"></div>
+        <div class="activity-text"><strong>Sarah Chen</strong> — email generated for HD Expo follow-up</div>
+        <div class="activity-time">2 min ago</div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background:var(--sage);"></div>
+        <div class="activity-text"><strong>IBS 2026 List</strong> — 47 contacts imported from CSV</div>
+        <div class="activity-time">1 hour ago</div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background:var(--clay);"></div>
+        <div class="activity-text"><strong>James Rodriguez</strong> — email marked as sent</div>
+        <div class="activity-time">3 hours ago</div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background:var(--primary);"></div>
+        <div class="activity-text"><strong>KBIS Prospects</strong> — generation profile updated</div>
+        <div class="activity-time">Yesterday</div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background:var(--slate);"></div>
+        <div class="activity-text"><strong>Emily Nakamura</strong> — contact enriched with company data</div>
+        <div class="activity-time">Yesterday</div>
+      </div>
+    </div>
+
+    <div class="card actions">
+      <div class="card-title">Quick Actions</div>
+      <button class="action-btn">
+        <div class="action-icon" style="background:var(--primary-light); color:var(--primary);">+</div>
+        Import Contacts
+      </button>
+      <button class="action-btn">
+        <div class="action-icon" style="background:var(--sage-light); color:var(--sage);">&#9993;</div>
+        Generate Emails
+      </button>
+      <button class="action-btn">
+        <div class="action-icon" style="background:var(--slate-light); color:var(--slate);">&#9998;</div>
+        Edit Profile
+      </button>
+      <button class="action-btn">
+        <div class="action-icon" style="background:var(--clay-light); color:var(--clay);">&#8599;</div>
+        Export Data
+      </button>
+    </div>
+
+    <!-- Chart + Calendar -->
+    <div class="card chart-card">
+      <div class="card-title">Email Generation Quality</div>
+      <div style="font-size:12px; color:var(--ink-muted); margin-bottom:8px;">Average "sounds like me" rating by week</div>
+      <div class="bar-chart">
+        <div class="bar-group"><div class="bar" style="height:50%; background:var(--border-light);"></div><div class="bar-label">W1</div></div>
+        <div class="bar-group"><div class="bar" style="height:58%; background:var(--border-light);"></div><div class="bar-label">W2</div></div>
+        <div class="bar-group"><div class="bar" style="height:65%; background:var(--border-light);"></div><div class="bar-label">W3</div></div>
+        <div class="bar-group"><div class="bar" style="height:72%; background:var(--border-light);"></div><div class="bar-label">W4</div></div>
+        <div class="bar-group"><div class="bar" style="height:70%; background:var(--border-light);"></div><div class="bar-label">W5</div></div>
+        <div class="bar-group"><div class="bar" style="height:78%; background:var(--border-light);"></div><div class="bar-label">W6</div></div>
+        <div class="bar-group"><div class="bar" style="height:82%; background:var(--primary-light);"></div><div class="bar-label">W7</div></div>
+        <div class="bar-group"><div class="bar" style="height:88%; background:var(--primary);"></div><div class="bar-label">W8</div></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-top:12px; font-size:11px; color:var(--ink-muted);">
+        <span>Current: <strong style="color:var(--primary);">4.4 / 5.0</strong></span>
+        <span>Target: 4.0 / 5.0</span>
+      </div>
+    </div>
+
+    <div class="card calendar-card">
+      <div class="card-title">Upcoming Shows</div>
+      <div class="show-item">
+        <div class="show-date" style="background:var(--primary-light); color:var(--primary);">
+          <span class="month">May</span><span class="day">14</span>
+        </div>
+        <div class="show-info">
+          <div class="show-name">HD Expo 2026</div>
+          <div class="show-location">Las Vegas, NV</div>
+        </div>
+        <span class="show-badge" style="background:var(--primary-light); color:var(--primary);">6 weeks</span>
+      </div>
+      <div class="show-item">
+        <div class="show-date" style="background:var(--clay-light); color:var(--clay);">
+          <span class="month">Jun</span><span class="day">8</span>
+        </div>
+        <div class="show-info">
+          <div class="show-name">NeoCon 2026</div>
+          <div class="show-location">Chicago, IL</div>
+        </div>
+        <span class="show-badge" style="background:var(--clay-light); color:var(--clay);">10 weeks</span>
+      </div>
+      <div class="show-item">
+        <div class="show-date" style="background:var(--sage-light); color:var(--sage);">
+          <span class="month">Sep</span><span class="day">22</span>
+        </div>
+        <div class="show-info">
+          <div class="show-name">ICFF 2026</div>
+          <div class="show-location">New York, NY</div>
+        </div>
+        <span class="show-badge" style="background:var(--sage-light); color:var(--sage);">25 weeks</span>
+      </div>
+      <div class="show-item">
+        <div class="show-date" style="background:var(--slate-light); color:var(--slate);">
+          <span class="month">Jan</span><span class="day">21</span>
+        </div>
+        <div class="show-info">
+          <div class="show-name">KBIS 2027</div>
+          <div class="show-location">Orlando, FL</div>
+        </div>
+        <span class="show-badge" style="background:var(--slate-light); color:var(--slate);">42 weeks</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

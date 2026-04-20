@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Lowercase e with zigzag bars extending from the opening (combining the Inbox bar concept with the e letterform). The bars spill out of where the e opens. -->
+  <path d="
+    M44,30 L12,30
+    Q8,30 8,24 Q8,10 32,10 Q56,10 56,30
+    Q56,52 32,54 Q22,56 16,48
+  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bars extending from the e's opening -->
+  <path d="
+    M16,48 L32,42
+    L18,56 L34,50
+  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

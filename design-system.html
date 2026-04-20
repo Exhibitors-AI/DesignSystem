@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exhibitors.ai — Design System V2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  /* ════════════════════════════════════════════════
+     DESIGN TOKENS
+     ════════════════════════════════════════════════ */
+  :root {
+    /* ── Color: Primary ── */
+    --primary: #2a9d8f;
+    --primary-hover: #249185;
+    --primary-light: #e0f3f0;
+    --primary-dark: #1e7a6f;
+
+    /* ── Color: Accents ── */
+    --clay: #c2783a;
+    --clay-light: #f5ece0;
+    --clay-hover: #ab6a33;
+    --sage: #3d9960;
+    --sage-light: #e2f2e6;
+    --sage-hover: #348552;
+    --slate: #6882a0;
+    --slate-light: #e8edf3;
+    --slate-hover: #5a7390;
+
+    /* ── Color: Neutrals ── */
+    --ink: #1a1a1a;
+    --ink-secondary: #444444;
+    --ink-muted: #777777;
+    --ink-subtle: #aaaaaa;
+
+    /* ── Color: Backgrounds ── */
+    --bg-page: #faf8f4;
+    --bg-warm: #f5efe6;
+    --bg-card: #ffffff;
+    --bg-hover: #f7f5f1;
+
+    /* ── Color: Borders ── */
+    --border: #e0dbd2;
+    --border-light: #efece6;
+
+    /* ── Color: Navigation ── */
+    --nav-bg: #1a1a1a;
+    --nav-hover: #2a2a2a;
+    --nav-text: #999999;
+    --nav-text-active: #ffffff;
+    --nav-label: #555555;
+
+    /* ── Color: Semantic ── */
+    --success: #3d9960;
+    --success-light: #e2f2e6;
+    --warning: #c2783a;
+    --warning-light: #f5ece0;
+    --error: #c25050;
+    --error-light: #fde8e8;
+    --info: #6882a0;
+    --info-light: #e8edf3;
+
+    /* ── Typography ── */
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* ── Spacing Scale ── */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 40px;
+    --space-8: 48px;
+    --space-9: 64px;
+    --space-10: 80px;
+    --space-11: 120px;
+
+    /* ── Border Radius ── */
+    --radius-xs: 3px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 18px;
+    --radius-full: 9999px;
+
+    /* ── Shadows ── */
+    --shadow-1: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-2: 0 4px 20px rgba(0,0,0,0.06);
+    --shadow-3: 0 10px 40px rgba(0,0,0,0.06);
+    --shadow-4: 0 20px 60px rgba(0,0,0,0.08);
+
+    /* ── Transitions ── */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.2s ease;
+    --transition-slow: 0.25s ease;
+    --transition-panel: 0.3s ease;
+
+    /* ── Layout ── */
+    --sidebar-width: 220px;
+    --content-max-width: 1200px;
+    --mobile-touch-target: 44px;
+  }
+
+  /* ════════════════════════════════════════════════
+     BASE STYLES
+     ════════════════════════════════════════════════ */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-page);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Page Layout ── */
+  .ds-header {
+    background: var(--nav-bg);
+    color: #fff;
+    padding: 48px 64px 40px;
+  }
+  .ds-header h1 {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .ds-header p {
+    font-size: 15px;
+    color: var(--nav-text);
+    font-weight: 300;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .ds-header .version {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .ds-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0 64px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .ds-nav a {
+    padding: 14px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+  .ds-nav a:hover { color: var(--ink); border-bottom-color: var(--border); }
+  .ds-nav a.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+  .ds-content { padding: 48px 64px; max-width: 1400px; }
+
+  .ds-section { margin-bottom: 80px; }
+  .ds-section-title {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .ds-section-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+    max-width: 600px;
+  }
+  .ds-subsection { margin-bottom: 40px; }
+  .ds-subsection-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  /* ════════════════════════════════════════════════
+     SECTION: COLORS
+     ════════════════════════════════════════════════ */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .color-swatch {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card);
+  }
+  .color-swatch .swatch-block {
+    height: 72px;
+    display: flex;
+    align-items: flex-end;
+    padding: 8px 10px;
+  }
+  .color-swatch .swatch-block .contrast-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  .color-swatch .swatch-info {
+    padding: 10px;
+  }
+  .color-swatch .swatch-name {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .color-swatch .swatch-var {
+    font-size: 10px;
+    color: var(--ink-muted);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .color-swatch .swatch-hex {
+    font-size: 10px;
+    color: var(--ink-subtle);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* ════════════════════════════════════════════════
+     SECTION: TYPOGRAPHY
+     ════════════════════════════════════════════════ */
+  .type-specimen {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 24px 32px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+  }
+  .type-specimen .sample { flex: 1; }
+  .type-specimen .meta {
+    flex-shrink: 0;
+    text-align: right;
+    min-width: 200px;
+  }
+  .type-specimen .meta .spec {
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .type-specimen .meta .usage {
+    font-size: 11px;
+    color: var(--primary);
+    margin-top: 4px;
+  }
+
+  /* ════════════════════════════════════════════════
+     SECTION: SPACING
+     ════════════════════════════════════════════════ */
+  .spacing-scale {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 24px 0;
+  }
+  .spacing-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .spacing-block {
+    background: var(--primary-light);
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+    width: 48px;
+  }
+  .spacing-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* ════════════════════════════════════════════════
+     SECTION: COMPONENTS
+     ════════════════════════════════════════════════ */
+  .component-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .component-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .component-card-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn-sm { padding: 6px 14px; font-size: 12px; height: 32px; }
+  .btn-md { padding: 10px 24px; font-size: 14px; height: 40px; }
+  .btn-lg { padding: 14px 36px; font-size: 15px; height: 48px; }
+
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: #333; }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--ink-secondary); }
+  .btn-outline:hover { border-color: var(--ink-muted); color: var(--ink); }
+  .btn-ghost { background: transparent; color: var(--ink-secondary); }
+  .btn-ghost:hover { background: var(--bg-hover); color: var(--ink); }
+  .btn-danger { background: var(--error); color: #fff; }
+  .btn-danger:hover { background: #b04545; }
+  .btn-disabled { background: var(--border-light); color: var(--ink-subtle); cursor: not-allowed; }
+
+  /* ── Form Elements ── */
+  .input {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--ink);
+    outline: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    width: 100%;
+    height: 40px;
+  }
+  .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+  .input::placeholder { color: var(--ink-subtle); }
+  .input-error { border-color: var(--error); }
+  .input-error:focus { box-shadow: 0 0 0 3px var(--error-light); }
+
+  .textarea {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--ink);
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    width: 100%;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+
+  .toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: var(--border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+  }
+  .toggle.active { background: var(--primary); }
+  .toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform var(--transition-fast);
+    box-shadow: var(--shadow-1);
+  }
+  .toggle.active::after { transform: translateX(20px); }
+
+  /* ── Badges ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: var(--radius-xs);
+  }
+  .badge-primary { background: var(--primary-light); color: var(--primary); }
+  .badge-clay { background: var(--clay-light); color: var(--clay); }
+  .badge-sage { background: var(--sage-light); color: var(--sage); }
+  .badge-slate { background: var(--slate-light); color: var(--slate); }
+  .badge-error { background: var(--error-light); color: var(--error); }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: box-shadow var(--transition-fast);
+  }
+  .card:hover { box-shadow: var(--shadow-2); }
+  .card-accent { border-left: 3px solid; }
+  .card-accent-primary { border-left-color: var(--primary); }
+  .card-accent-clay { border-left-color: var(--clay); }
+  .card-accent-sage { border-left-color: var(--sage); }
+  .card-accent-slate { border-left-color: var(--slate); }
+
+  .card-header { padding: 16px 20px; }
+  .card-body { padding: 0 20px 16px; }
+  .card-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-name {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .card-company { font-size: 12px; color: var(--ink-secondary); }
+  .card-meta { font-size: 11px; color: var(--ink-muted); }
+
+  /* ── Metric Card ── */
+  .metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .metric-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+  }
+  .metric-value {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .metric-change {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+  .metric-change.up { color: var(--sage); }
+  .metric-change.down { color: var(--error); }
+
+  /* ── Navigation ── */
+  .nav-sidebar-demo {
+    background: var(--nav-bg);
+    width: 220px;
+    border-radius: var(--radius-md);
+    padding: 20px 12px;
+    color: var(--nav-text);
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px 16px;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 16px;
+  }
+  .nav-brand-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .nav-brand-name {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+  }
+  .nav-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--nav-label);
+    padding: 8px 12px 4px;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    color: var(--nav-text);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .nav-item:hover { background: var(--nav-hover); color: #ccc; }
+  .nav-item.active { background: var(--nav-hover); color: var(--nav-text-active); }
+
+  /* ── Mobile Bottom Tabs ── */
+  .mobile-tabs-demo {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    display: flex;
+    padding: 8px 0;
+    max-width: 375px;
+  }
+  .mobile-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    cursor: pointer;
+  }
+  .mobile-tab.active { color: var(--primary); }
+  .mobile-tab .tab-icon {
+    width: 24px;
+    height: 24px;
+    background: currentColor;
+    border-radius: 4px;
+    opacity: 0.3;
+  }
+  .mobile-tab.active .tab-icon { opacity: 0.8; }
+
+  /* ── Toast ── */
+  .toast-demo {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+  }
+  .toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: var(--shadow-3);
+    max-width: 400px;
+  }
+  .toast-success { background: var(--sage); color: #fff; }
+  .toast-error { background: var(--error); color: #fff; }
+  .toast-info { background: var(--ink); color: #fff; }
+
+  /* ── Skeleton ── */
+  .skeleton {
+    background: linear-gradient(90deg, var(--border-light) 25%, var(--bg-hover) 50%, var(--border-light) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s ease infinite;
+    border-radius: var(--radius-sm);
+  }
+  @keyframes skeleton-pulse {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ── Radius Demo ── */
+  .radius-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .radius-demo {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-light);
+    border: 2px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .radius-demo .val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  .radius-demo .label {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  /* ── Shadow Demo ── */
+  .shadow-grid {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .shadow-demo {
+    width: 120px;
+    height: 80px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-muted);
+  }
+
+  /* ── Table ── */
+  .table-demo {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .table-demo th {
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    border-bottom: 2px solid var(--border);
+    background: var(--bg-page);
+  }
+  .table-demo td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--ink-secondary);
+  }
+  .table-demo tr:hover td { background: var(--bg-hover); }
+  .table-demo .td-name {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── Interaction Spec ── */
+  .interaction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .interaction-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 20px;
+  }
+  .interaction-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .interaction-card .platform {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+  .interaction-card p {
+    font-size: 12px;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="ds-header">
+  <h1>Exhibitors.ai Design System</h1>
+  <p>Cross-platform design language for web app, mobile app (React Native), and marketing site. Source of truth for all visual and interaction decisions.</p>
+  <p style="margin-top:16px; max-width:720px; line-height:1.7; color:#bbb; font-size:14px;">Exhibitors.ai's visual language projects confident calm in the middle of chaos. Trade shows are loud, overwhelming, and relentless. The warm cream palette, generous whitespace, and serif headings ground users with the steady presence of a plan already in motion. This is a tool built by people who understand what it feels like to come home with 200 contacts and no system. Teal sits at the intersection of composure and conviction. Steady enough to trust with your pipeline, sharp enough to feel like a competitive edge. Inter keeps the interface precise when pressure is real, and the four-accent classification system turns raw contact lists into a clean, considered editorial layout. Restrained shadows and purposeful spacing are not decorative. They say: we will be the calm part of your post-show week.</p>
+  <span class="version">V2 — April 2026</span>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<div class="ds-nav">
+  <a href="#colors" class="active">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#spacing">Spacing</a>
+  <a href="#radius">Radius</a>
+  <a href="#shadows">Shadows</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#forms">Forms</a>
+  <a href="#cards">Cards</a>
+  <a href="#badges">Badges</a>
+  <a href="#navigation">Navigation</a>
+  <a href="#tables">Tables</a>
+  <a href="#feedback">Feedback</a>
+  <a href="#interactions">Interactions</a>
+</div>
+
+<div class="ds-content">
+
+<!-- ═══ COLORS ═══ -->
+<div class="ds-section" id="colors">
+  <h2 class="ds-section-title">Color Palette</h2>
+  <p class="ds-section-desc">Warm, editorial palette anchored by teal as the primary brand color. Accent colors (clay, sage, slate) are used for classification and categorization throughout the product.</p>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Primary</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#2a9d8f;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Primary</div><div class="swatch-var">--primary</div><div class="swatch-hex">#2A9D8F</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#249185;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Primary Hover</div><div class="swatch-var">--primary-hover</div><div class="swatch-hex">#249185</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#e0f3f0;"><span class="contrast-text" style="color:#2a9d8f;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Primary Light</div><div class="swatch-var">--primary-light</div><div class="swatch-hex">#E0F3F0</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1e7a6f;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Primary Dark</div><div class="swatch-var">--primary-dark</div><div class="swatch-hex">#1E7A6F</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Accents</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#c2783a;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Clay</div><div class="swatch-var">--clay</div><div class="swatch-hex">#C2783A</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#f5ece0;"><span class="contrast-text" style="color:#c2783a;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Clay Light</div><div class="swatch-var">--clay-light</div><div class="swatch-hex">#F5ECE0</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#3d9960;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Sage</div><div class="swatch-var">--sage</div><div class="swatch-hex">#3D9960</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#e2f2e6;"><span class="contrast-text" style="color:#3d9960;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Sage Light</div><div class="swatch-var">--sage-light</div><div class="swatch-hex">#E2F2E6</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#6882a0;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Slate</div><div class="swatch-var">--slate</div><div class="swatch-hex">#6882A0</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#e8edf3;"><span class="contrast-text" style="color:#6882a0;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Slate Light</div><div class="swatch-var">--slate-light</div><div class="swatch-hex">#E8EDF3</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Neutrals</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1a1a1a;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Ink</div><div class="swatch-var">--ink</div><div class="swatch-hex">#1A1A1A</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#444444;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Ink Secondary</div><div class="swatch-var">--ink-secondary</div><div class="swatch-hex">#444444</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#777777;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Ink Muted</div><div class="swatch-var">--ink-muted</div><div class="swatch-hex">#777777</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#aaaaaa;"><span class="contrast-text" style="color:#fff;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Ink Subtle</div><div class="swatch-var">--ink-subtle</div><div class="swatch-hex">#AAAAAA</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Backgrounds & Borders</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#faf8f4; border:1px solid #e0dbd2;"><span class="contrast-text" style="color:#777;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Page</div><div class="swatch-var">--bg-page</div><div class="swatch-hex">#FAF8F4</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#f5efe6; border:1px solid #e0dbd2;"><span class="contrast-text" style="color:#777;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Warm</div><div class="swatch-var">--bg-warm</div><div class="swatch-hex">#F5EFE6</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#ffffff; border:1px solid #e0dbd2;"><span class="contrast-text" style="color:#777;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Card</div><div class="swatch-var">--bg-card</div><div class="swatch-hex">#FFFFFF</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#e0dbd2;"><span class="contrast-text" style="color:#777;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-var">--border</div><div class="swatch-hex">#E0DBD2</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#efece6;"><span class="contrast-text" style="color:#777;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">Border Light</div><div class="swatch-var">--border-light</div><div class="swatch-hex">#EFECE6</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Semantic</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#3d9960;"><span class="contrast-text" style="color:#fff;">Success</span></div>
+        <div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-var">--success</div><div class="swatch-hex">#3D9960</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#c2783a;"><span class="contrast-text" style="color:#fff;">Warning</span></div>
+        <div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-var">--warning</div><div class="swatch-hex">#C2783A</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#c25050;"><span class="contrast-text" style="color:#fff;">Error</span></div>
+        <div class="swatch-info"><div class="swatch-name">Error</div><div class="swatch-var">--error</div><div class="swatch-hex">#C25050</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#6882a0;"><span class="contrast-text" style="color:#fff;">Info</span></div>
+        <div class="swatch-info"><div class="swatch-name">Info</div><div class="swatch-var">--info</div><div class="swatch-hex">#6882A0</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TYPOGRAPHY ═══ -->
+<div class="ds-section" id="typography">
+  <h2 class="ds-section-title">Typography</h2>
+  <p class="ds-section-desc">Source Serif 4 for editorial presence and hierarchy. Inter for functional UI text. The serif/sans pairing creates warmth without sacrificing readability.</p>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Display & Headings (Source Serif 4)</div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-serif); font-size:56px; font-weight:300; letter-spacing:-0.02em; line-height:1.12;">Turn every booth visit into a connection</div>
+      <div class="meta"><div class="spec">56px / 300 / -0.02em / 1.12</div><div class="usage">Display 1 — Hero headlines</div></div>
+    </div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-serif); font-size:44px; font-weight:300; letter-spacing:-0.01em; line-height:1.15;">Section Headlines</div>
+      <div class="meta"><div class="spec">44px / 300 / -0.01em / 1.15</div><div class="usage">Display 2 — Page section titles</div></div>
+    </div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-serif); font-size:36px; font-weight:400; letter-spacing:-0.01em; line-height:1.2;">Page Titles</div>
+      <div class="meta"><div class="spec">36px / 400 / -0.01em / 1.2</div><div class="usage">Headline 1 — Dashboard & page headers</div></div>
+    </div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-serif); font-size:32px; font-weight:400; letter-spacing:-0.01em; line-height:1.4;">Content Headers</div>
+      <div class="meta"><div class="spec">32px / 400 / -0.01em / 1.4</div><div class="usage">Headline 2 — Card groups, settings</div></div>
+    </div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-serif); font-size:18px; font-weight:400; letter-spacing:-0.01em; line-height:1.2;">Card Titles & Names</div>
+      <div class="meta"><div class="spec">18px / 400 / -0.01em / 1.2</div><div class="usage">Headline 3 — Contact names, card titles</div></div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Body & UI Text (Inter)</div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-sans); font-size:16px; font-weight:400; line-height:1.7; color:var(--ink-secondary);">Body large text for marketing prose, onboarding copy, and longer descriptions that need comfortable reading density.</div>
+      <div class="meta"><div class="spec">16px / 400 / 0 / 1.7</div><div class="usage">Body Large — Marketing copy, descriptions</div></div>
+    </div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-sans); font-size:14px; font-weight:400; line-height:1.6; color:var(--ink-secondary);">Default body text used throughout the application for form labels, table cells, card descriptions, and general content.</div>
+      <div class="meta"><div class="spec">14px / 400 / 0 / 1.6</div><div class="usage">Body — Default app text</div></div>
+    </div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-sans); font-size:13px; font-weight:400; line-height:1.5; color:var(--ink-muted);">Small body text for email previews, metadata, timestamps, and secondary information.</div>
+      <div class="meta"><div class="spec">13px / 400 / 0 / 1.5</div><div class="usage">Body Small — Meta, previews</div></div>
+    </div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-sans); font-size:12px; font-weight:400; line-height:1.5; color:var(--ink-muted);">Caption text for footnotes, helper text, and fine print.</div>
+      <div class="meta"><div class="spec">12px / 400 / 0 / 1.5</div><div class="usage">Caption — Helper text, footnotes</div></div>
+    </div>
+    <div class="type-specimen">
+      <div class="sample" style="font-family:var(--font-sans); font-size:11px; font-weight:600; line-height:1.2; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-muted);">Label &bull; Section Header &bull; Badge Text</div>
+      <div class="meta"><div class="spec">11px / 600 / 0.06em / 1.2 / uppercase</div><div class="usage">Label — Section headers, badges, eyebrows</div></div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Font Pairing Rules</div>
+    <div class="component-card">
+      <p style="font-size:13px; color:var(--ink-secondary); line-height:1.7;">
+        <strong>Serif (Source Serif 4):</strong> All headings, display text, contact/company names on cards, pull quotes, metric values, brand wordmark. Conveys editorial authority.<br><br>
+        <strong>Sans (Inter):</strong> All body text, form labels, button text, navigation items, table cells, badges, metadata. Conveys functional clarity.<br><br>
+        <strong>Rule of thumb:</strong> If the text establishes hierarchy or identity, use serif. If the text is actionable or informational, use sans.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SPACING ═══ -->
+<div class="ds-section" id="spacing">
+  <h2 class="ds-section-title">Spacing</h2>
+  <p class="ds-section-desc">A generous spacing scale on a 4px base unit. The editorial direction favors breathing room — err on the side of more space, not less.</p>
+
+  <div class="spacing-scale">
+    <div class="spacing-item"><div class="spacing-block" style="height:4px;"></div><div class="spacing-label">4</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:8px;"></div><div class="spacing-label">8</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:12px;"></div><div class="spacing-label">12</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:16px;"></div><div class="spacing-label">16</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:24px;"></div><div class="spacing-label">24</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:32px;"></div><div class="spacing-label">32</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:40px;"></div><div class="spacing-label">40</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:48px;"></div><div class="spacing-label">48</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:64px;"></div><div class="spacing-label">64</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:80px;"></div><div class="spacing-label">80</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="height:120px;"></div><div class="spacing-label">120</div></div>
+  </div>
+
+  <div class="component-card" style="margin-top:16px;">
+    <div class="component-card-title">Usage Guide</div>
+    <p style="font-size:12px; color:var(--ink-secondary); line-height:1.7;">
+      <strong>4-8px:</strong> Inline spacing — icon-to-text gap, badge padding, tight element groups<br>
+      <strong>12-16px:</strong> Component internal — card padding, input padding, list item spacing<br>
+      <strong>24-32px:</strong> Component separation — gap between cards, section padding, form field spacing<br>
+      <strong>40-48px:</strong> Section padding — content area padding, sidebar padding, page margins<br>
+      <strong>64-80px:</strong> Page sections — hero padding, section dividers, major content groups<br>
+      <strong>120px:</strong> Hero-level — landing page section spacing, max breathing room
+    </p>
+  </div>
+</div>
+
+<!-- ═══ BORDER RADIUS ═══ -->
+<div class="ds-section" id="radius">
+  <h2 class="ds-section-title">Border Radius</h2>
+  <p class="ds-section-desc">Five levels from sharp to soft. Smaller radii for data-dense UI, larger for editorial and marketing elements.</p>
+  <div class="radius-grid">
+    <div class="radius-demo" style="border-radius:3px;"><span class="val">3px</span><span class="label">xs</span></div>
+    <div class="radius-demo" style="border-radius:4px;"><span class="val">4px</span><span class="label">sm</span></div>
+    <div class="radius-demo" style="border-radius:8px;"><span class="val">8px</span><span class="label">md</span></div>
+    <div class="radius-demo" style="border-radius:16px;"><span class="val">16px</span><span class="label">lg</span></div>
+    <div class="radius-demo" style="border-radius:18px;"><span class="val">18px</span><span class="label">xl</span></div>
+    <div class="radius-demo" style="border-radius:9999px; width:80px;"><span class="val">full</span><span class="label">pill</span></div>
+  </div>
+  <div class="component-card" style="margin-top:16px;">
+    <div class="component-card-title">Usage</div>
+    <p style="font-size:12px; color:var(--ink-secondary); line-height:1.7;">
+      <strong>xs (3px):</strong> Badges, status indicators, inline tags<br>
+      <strong>sm (4px):</strong> Email cards, data-dense cards, code blocks<br>
+      <strong>md (8px):</strong> Buttons, inputs, nav items, tooltips — default for interactive elements<br>
+      <strong>lg (16px):</strong> Dashboard metric cards, bento grid items, feature blocks<br>
+      <strong>xl (18px):</strong> Marketing sections, hero visual containers, large feature cards<br>
+      <strong>full:</strong> Avatars, pill buttons, toggle switches
+    </p>
+  </div>
+</div>
+
+<!-- ═══ SHADOWS ═══ -->
+<div class="ds-section" id="shadows">
+  <h2 class="ds-section-title">Elevation & Shadows</h2>
+  <p class="ds-section-desc">Four levels of subtle, warm-toned elevation. Use sparingly — the editorial style relies more on borders and spacing than shadow depth.</p>
+  <div class="shadow-grid">
+    <div class="shadow-demo" style="box-shadow:var(--shadow-1);">Level 1</div>
+    <div class="shadow-demo" style="box-shadow:var(--shadow-2);">Level 2</div>
+    <div class="shadow-demo" style="box-shadow:var(--shadow-3);">Level 3</div>
+    <div class="shadow-demo" style="box-shadow:var(--shadow-4);">Level 4</div>
+  </div>
+  <div class="component-card" style="margin-top:16px;">
+    <div class="component-card-title">Usage</div>
+    <p style="font-size:12px; color:var(--ink-secondary); line-height:1.7;">
+      <strong>Level 1:</strong> Resting state for interactive cards, subtle lift<br>
+      <strong>Level 2:</strong> Hover state for cards, dropdown menus, popovers<br>
+      <strong>Level 3:</strong> Slide-out panels, toasts, floating elements<br>
+      <strong>Level 4:</strong> Hero visual elements, modals, full-page overlays
+    </p>
+  </div>
+</div>
+
+<!-- ═══ BUTTONS ═══ -->
+<div class="ds-section" id="buttons">
+  <h2 class="ds-section-title">Buttons</h2>
+  <p class="ds-section-desc">Five semantic variants in three sizes. Primary (teal) for the main action, dark for secondary emphasis, outline for tertiary.</p>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Variants</div>
+    <div class="component-row">
+      <button class="btn btn-md btn-primary">Primary</button>
+      <button class="btn btn-md btn-dark">Dark</button>
+      <button class="btn btn-md btn-outline">Outline</button>
+      <button class="btn btn-md btn-ghost">Ghost</button>
+      <button class="btn btn-md btn-danger">Danger</button>
+      <button class="btn btn-md btn-disabled">Disabled</button>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Sizes</div>
+    <div class="component-row">
+      <button class="btn btn-sm btn-primary">Small</button>
+      <button class="btn btn-md btn-primary">Medium</button>
+      <button class="btn btn-lg btn-primary">Large</button>
+    </div>
+    <div class="component-row" style="margin-top:8px;">
+      <button class="btn btn-sm btn-outline">Small</button>
+      <button class="btn btn-md btn-outline">Medium</button>
+      <button class="btn btn-lg btn-outline">Large</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FORMS ═══ -->
+<div class="ds-section" id="forms">
+  <h2 class="ds-section-title">Form Elements</h2>
+  <p class="ds-section-desc">Clean, warm form styling with teal focus rings. Touch targets meet 44px minimum on mobile.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:700px;">
+    <div>
+      <div style="font-size:12px; font-weight:500; margin-bottom:6px;">Text Input</div>
+      <input class="input" placeholder="Enter contact name..." />
+    </div>
+    <div>
+      <div style="font-size:12px; font-weight:500; margin-bottom:6px;">Input with Error</div>
+      <input class="input input-error" value="invalid@" />
+      <div style="font-size:11px; color:var(--error); margin-top:4px;">Please enter a valid email address</div>
+    </div>
+    <div>
+      <div style="font-size:12px; font-weight:500; margin-bottom:6px;">Search</div>
+      <input class="input" placeholder="Search contacts..." style="padding-left:36px;" />
+    </div>
+    <div>
+      <div style="font-size:12px; font-weight:500; margin-bottom:6px;">Disabled</div>
+      <input class="input" value="Locked field" disabled style="opacity:0.5; cursor:not-allowed;" />
+    </div>
+    <div style="grid-column:span 2;">
+      <div style="font-size:12px; font-weight:500; margin-bottom:6px;">Textarea</div>
+      <textarea class="textarea" placeholder="Add notes about this contact..."></textarea>
+    </div>
+  </div>
+
+  <div class="ds-subsection" style="margin-top:24px;">
+    <div class="ds-subsection-title">Toggles</div>
+    <div class="component-row">
+      <div style="display:flex; align-items:center; gap:8px;"><div class="toggle"></div><span style="font-size:13px;">Inactive</span></div>
+      <div style="display:flex; align-items:center; gap:8px;"><div class="toggle active"></div><span style="font-size:13px;">Active</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CARDS ═══ -->
+<div class="ds-section" id="cards">
+  <h2 class="ds-section-title">Cards</h2>
+  <p class="ds-section-desc">Cards use a left-accent stripe to indicate classification. Four accent colors map to contact categories.</p>
+
+  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; max-width:800px;">
+    <!-- Email card -->
+    <div class="card card-accent card-accent-primary">
+      <div class="card-header">
+        <div class="card-name">Sarah Chen</div>
+        <div class="card-company">Meridian Design Group</div>
+        <div class="card-meta" style="margin-top:6px;">VP of Marketing &bull; Pre-Engagement</div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:13px; color:var(--ink-secondary); line-height:1.7;">Hi Sarah, it was great connecting at HD Expo last week. Your approach to hospitality design really resonated with our team...</p>
+      </div>
+      <div class="card-footer">
+        <span class="badge badge-primary">Teal — Pre-Engagement</span>
+      </div>
+    </div>
+
+    <div class="card card-accent card-accent-clay">
+      <div class="card-header">
+        <div class="card-name">James Rodriguez</div>
+        <div class="card-company">BuildTech Solutions</div>
+        <div class="card-meta" style="margin-top:6px;">Director of Sales &bull; Existing Customer</div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:13px; color:var(--ink-secondary); line-height:1.7;">James, thanks for stopping by our booth at IBS this year. We'd love to discuss how our latest updates can support your team...</p>
+      </div>
+      <div class="card-footer">
+        <span class="badge badge-clay">Clay — Existing Customer</span>
+      </div>
+    </div>
+
+    <!-- Metric cards -->
+    <div class="metric-card">
+      <div class="metric-label">Emails Generated</div>
+      <div class="metric-value" style="color:var(--primary);">247</div>
+      <div class="metric-change up">+18% from last week</div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">Contacts Uploaded</div>
+      <div class="metric-value">1,843</div>
+      <div class="metric-change up">+32% from last week</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BADGES ═══ -->
+<div class="ds-section" id="badges">
+  <h2 class="ds-section-title">Badges & Tags</h2>
+  <p class="ds-section-desc">Color-coded badges for classification, status, and categorization. Each accent color maps to a specific meaning.</p>
+  <div class="component-row">
+    <span class="badge badge-primary">Pre-Engagement</span>
+    <span class="badge badge-clay">Existing Customer</span>
+    <span class="badge badge-sage">Post-Engagement</span>
+    <span class="badge badge-slate">Research</span>
+    <span class="badge badge-error">Urgent</span>
+  </div>
+  <div class="component-card" style="margin-top:16px;">
+    <div class="component-card-title">Classification Color Mapping</div>
+    <p style="font-size:12px; color:var(--ink-secondary); line-height:1.7;">
+      <strong style="color:var(--primary);">Teal:</strong> Pre-engagement, new contacts, default state<br>
+      <strong style="color:var(--clay);">Clay:</strong> Existing customers, warm leads, follow-up due<br>
+      <strong style="color:var(--sage);">Sage:</strong> Post-engagement, completed, success states<br>
+      <strong style="color:var(--slate);">Slate:</strong> Research, informational, neutral classification
+    </p>
+  </div>
+</div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<div class="ds-section" id="navigation">
+  <h2 class="ds-section-title">Navigation</h2>
+  <p class="ds-section-desc">Web uses a 220px expanded sidebar. Mobile uses bottom tab bar. Both share the same information architecture.</p>
+
+  <div style="display:flex; gap:32px; flex-wrap:wrap;">
+    <!-- Sidebar -->
+    <div>
+      <div class="ds-subsection-title">Web Sidebar (220px)</div>
+      <div class="nav-sidebar-demo">
+        <div class="nav-brand">
+          <div class="nav-brand-icon">E</div>
+          <div class="nav-brand-name">Exhibitors</div>
+        </div>
+        <div class="nav-section-label">Main</div>
+        <div class="nav-item active">Dashboard</div>
+        <div class="nav-item">Lists</div>
+        <div class="nav-item">Contacts</div>
+        <div class="nav-item">Emails</div>
+        <div class="nav-section-label">Settings</div>
+        <div class="nav-item">Profiles</div>
+        <div class="nav-item">Settings</div>
+      </div>
+    </div>
+
+    <!-- Mobile tabs -->
+    <div>
+      <div class="ds-subsection-title">Mobile Bottom Tabs</div>
+      <div class="mobile-tabs-demo">
+        <div class="mobile-tab active"><div class="tab-icon"></div>Home</div>
+        <div class="mobile-tab"><div class="tab-icon"></div>Lists</div>
+        <div class="mobile-tab"><div class="tab-icon"></div>Scan</div>
+        <div class="mobile-tab"><div class="tab-icon"></div>Profile</div>
+      </div>
+      <div class="component-card" style="margin-top:12px; max-width:375px;">
+        <p style="font-size:11px; color:var(--ink-muted); line-height:1.6;">
+          Mobile IA: Home (recent activity), Lists (browse/create), Scan (camera capture), Profile (settings/account). Touch targets: 44pt minimum.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TABLES ═══ -->
+<div class="ds-section" id="tables">
+  <h2 class="ds-section-title">Tables</h2>
+  <p class="ds-section-desc">Data tables for web. On mobile, the same data renders as stacked list cards (see interaction patterns).</p>
+  <div class="component-card" style="padding:0; overflow:hidden;">
+    <table class="table-demo">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Company</th>
+          <th>Category</th>
+          <th>Show</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-name">Sarah Chen</td>
+          <td>Meridian Design Group</td>
+          <td><span class="badge badge-primary">Pre-Engagement</span></td>
+          <td>HD Expo 2026</td>
+          <td style="color:var(--sage);">Email Sent</td>
+        </tr>
+        <tr>
+          <td class="td-name">James Rodriguez</td>
+          <td>BuildTech Solutions</td>
+          <td><span class="badge badge-clay">Existing</span></td>
+          <td>IBS 2026</td>
+          <td style="color:var(--ink-muted);">Draft</td>
+        </tr>
+        <tr>
+          <td class="td-name">Emily Nakamura</td>
+          <td>Pacific Interiors</td>
+          <td><span class="badge badge-sage">Post-Engagement</span></td>
+          <td>KBIS 2026</td>
+          <td style="color:var(--primary);">Generated</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ FEEDBACK ═══ -->
+<div class="ds-section" id="feedback">
+  <h2 class="ds-section-title">Feedback & States</h2>
+  <p class="ds-section-desc">Toasts for transient feedback, inline messages for persistent state, skeletons for loading.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+    <div>
+      <div class="ds-subsection-title">Toasts</div>
+      <div class="toast-demo">
+        <div class="toast toast-success">Email generated successfully</div>
+        <div class="toast toast-error">Import failed — check CSV format</div>
+        <div class="toast toast-info">3 contacts added to list</div>
+      </div>
+    </div>
+    <div>
+      <div class="ds-subsection-title">Loading Skeletons</div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="skeleton" style="height:20px; width:60%;"></div>
+        <div class="skeleton" style="height:14px; width:80%;"></div>
+        <div class="skeleton" style="height:14px; width:45%;"></div>
+        <div style="display:flex; gap:12px; margin-top:8px;">
+          <div class="skeleton" style="height:40px; width:100px; border-radius:var(--radius-md);"></div>
+          <div class="skeleton" style="height:40px; width:80px; border-radius:var(--radius-md);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ INTERACTION PATTERNS ═══ -->
+<div class="ds-section" id="interactions">
+  <h2 class="ds-section-title">Interaction Patterns</h2>
+  <p class="ds-section-desc">How the same actions adapt across web and mobile platforms.</p>
+
+  <div class="interaction-grid">
+    <div class="interaction-card">
+      <h4>Navigation</h4>
+      <div class="platform">Web ↔ Mobile</div>
+      <p><strong>Web:</strong> 220px sidebar with section labels, hover highlights, active state.<br><strong>Mobile:</strong> Bottom tab bar (4 tabs max). Secondary nav via stack navigation with back arrow. No hamburger menu.</p>
+    </div>
+    <div class="interaction-card">
+      <h4>Data Tables ↔ List Cards</h4>
+      <div class="platform">Web ↔ Mobile</div>
+      <p><strong>Web:</strong> Full data table with sortable columns, row hover, batch selection.<br><strong>Mobile:</strong> Stacked list cards showing name + company + badge. Tap to expand detail. Swipe for quick actions (edit, delete).</p>
+    </div>
+    <div class="interaction-card">
+      <h4>Modals & Overlays</h4>
+      <div class="platform">Web ↔ Mobile</div>
+      <p><strong>Web:</strong> Centered modal (max 560px wide) with overlay. Slide-out panel (420px) from right for detail views.<br><strong>Mobile:</strong> Bottom sheet (drag to dismiss) for options. Full-screen modal for forms. No centered modals.</p>
+    </div>
+    <div class="interaction-card">
+      <h4>Hover ↔ Touch</h4>
+      <div class="platform">Web ↔ Mobile</div>
+      <p><strong>Web:</strong> Hover reveals secondary actions, shows tooltips, highlights interactive elements.<br><strong>Mobile:</strong> Long-press for context menu. Visible action buttons (no hidden hover states). Haptic feedback on destructive actions.</p>
+    </div>
+    <div class="interaction-card">
+      <h4>Forms & Input</h4>
+      <div class="platform">Web ↔ Mobile</div>
+      <p><strong>Web:</strong> 40px input height, focus ring, inline validation below field.<br><strong>Mobile:</strong> 44pt minimum touch target. Keyboard-appropriate input types (email, tel, number). Validation on blur, not on keystroke.</p>
+    </div>
+    <div class="interaction-card">
+      <h4>Destructive Actions</h4>
+      <div class="platform">Both Platforms</div>
+      <p>Always require confirmation. Web: centered modal with "Cancel" (outline) and "Delete" (danger) buttons. Mobile: bottom sheet confirmation with red destructive button. Never use swipe-to-delete without undo.</p>
+    </div>
+    <div class="interaction-card">
+      <h4>Loading States</h4>
+      <div class="platform">Both Platforms</div>
+      <p>Use skeleton screens for initial page loads (not spinners). Show inline spinners only for actions (button loading state). Progress bars for multi-step operations (import, generation). Skeleton shimmer animation: 1.5s ease infinite.</p>
+    </div>
+    <div class="interaction-card">
+      <h4>Empty States</h4>
+      <div class="platform">Both Platforms</div>
+      <p>Every empty view has: a headline (serif, 18px), a description (sans, 13px, muted), and a primary action button. No blank screens. Use warm, editorial tone — "Your first list starts here" not "No data found."</p>
+    </div>
+    <div class="interaction-card">
+      <h4>Transitions</h4>
+      <div class="platform">Both Platforms</div>
+      <p><strong>Micro:</strong> 0.15s ease — hover states, toggle, button press.<br><strong>Base:</strong> 0.2s ease — dropdown open, tooltip appear.<br><strong>Slow:</strong> 0.25s ease — slide-out panel, accordion expand.<br><strong>Panel:</strong> 0.3s ease — modal overlay, page transition.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Filled with very generous rounding. Feels like a friendly, confident icon. -->
+  <rect x="6" y="14" width="52" height="36" rx="10" fill="#2a9d8f"/>
+  <polyline points="8,18 32,38 56,18" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="8" y1="46" x2="24" y2="34" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="56" y1="46" x2="40" y2="34" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

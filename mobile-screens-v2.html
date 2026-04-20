@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exhibitors.ai — Mobile App Screens V2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --primary: #2a9d8f; --primary-hover: #249185; --primary-light: #e0f3f0; --primary-dark: #1e7a6f;
+    --clay: #c2783a; --clay-light: #f5ece0;
+    --sage: #3d9960; --sage-light: #e2f2e6;
+    --slate: #6882a0; --slate-light: #e8edf3;
+    --ink: #1a1a1a; --ink-secondary: #444; --ink-muted: #777; --ink-subtle: #aaa;
+    --bg-page: #faf8f4; --bg-warm: #f5efe6; --bg-card: #fff;
+    --border: #e0dbd2; --border-light: #efece6;
+    --error: #c25050; --error-light: #fde8e8;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --shadow-2: 0 4px 20px rgba(0,0,0,0.06);
+    --shadow-3: 0 10px 40px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-sans); background: var(--bg-page); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+  /* ── Page Layout ── */
+  .page-header {
+    background: #1a1a1a; color: #fff; padding: 48px 64px 40px;
+  }
+  .page-header h1 { font-family: var(--font-serif); font-size: 36px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .page-header p { font-size: 15px; color: #999; font-weight: 300; max-width: 500px; }
+
+  .screens-section { padding: 48px 64px; }
+  .screens-section h2 { font-family: var(--font-serif); font-size: 28px; font-weight: 400; margin-bottom: 8px; }
+  .screens-section .section-desc { font-size: 14px; color: var(--ink-muted); margin-bottom: 32px; max-width: 500px; }
+
+  .screen-row { display: flex; gap: 32px; margin-bottom: 64px; flex-wrap: wrap; justify-content: center; }
+
+  /* ── Phone Frame ── */
+  .phone {
+    width: 375px; height: 812px;
+    background: #000; border-radius: 44px;
+    padding: 12px;
+    box-shadow: var(--shadow-3), inset 0 0 0 2px #333;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .phone-screen {
+    width: 100%; height: 100%;
+    background: var(--bg-page);
+    border-radius: 36px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .phone .notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    background: #000;
+    border-radius: 0 0 16px 16px;
+    z-index: 10;
+  }
+
+  /* ── Status Bar ── */
+  .status-bar {
+    height: 54px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 24px 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .status-bar .time { font-size: 15px; font-weight: 600; }
+  .status-icons { display: flex; gap: 4px; align-items: center; font-size: 12px; }
+
+  /* ── Nav Bar ── */
+  .mobile-nav-bar {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 12px;
+  }
+  .mobile-nav-bar .back-arrow { font-size: 20px; color: var(--primary); cursor: pointer; width: 32px; }
+  .mobile-nav-bar .nav-title { font-family: var(--font-serif); font-size: 20px; font-weight: 400; flex: 1; }
+  .mobile-nav-bar .nav-action { font-size: 13px; font-weight: 500; color: var(--primary); }
+
+  /* ── Bottom Tab Bar ── */
+  .tab-bar {
+    display: flex;
+    padding: 8px 0 28px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-light);
+  }
+  .tab {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+    font-size: 10px; font-weight: 500; color: var(--ink-subtle);
+  }
+  .tab.active { color: var(--primary); }
+  .tab-icon {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  /* ── Content Scroll ── */
+  .screen-content { flex: 1; overflow: hidden; }
+
+  /* ── Contact List Items ── */
+  .contact-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .contact-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 600; color: #fff; flex-shrink: 0;
+  }
+  .contact-name { font-size: 15px; font-weight: 500; }
+  .contact-company { font-size: 12px; color: var(--ink-muted); }
+  .contact-badge { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; margin-left: auto; flex-shrink: 0; }
+
+  /* ── Form Elements ── */
+  .mobile-input {
+    width: 100%; height: 44px;
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 0 14px; font-size: 16px; font-family: var(--font-sans);
+    background: var(--bg-card); color: var(--ink);
+  }
+  .mobile-input::placeholder { color: var(--ink-subtle); }
+  .mobile-label { font-size: 13px; font-weight: 500; margin-bottom: 6px; display: block; }
+  .mobile-form-group { padding: 0 20px; margin-bottom: 16px; }
+  .mobile-btn {
+    display: flex; align-items: center; justify-content: center;
+    height: 48px; border-radius: 12px; font-size: 16px; font-weight: 600;
+    font-family: var(--font-sans); border: none; cursor: pointer; width: 100%;
+  }
+
+  /* ── Camera Viewfinder ── */
+  .viewfinder {
+    flex: 1; background: #111; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .viewfinder-frame {
+    width: 85%; height: 55%;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 12px;
+    position: relative;
+  }
+  .viewfinder-corner {
+    position: absolute; width: 20px; height: 20px;
+    border-color: var(--primary); border-style: solid;
+  }
+  .vf-tl { top: -2px; left: -2px; border-width: 3px 0 0 3px; border-radius: 6px 0 0 0; }
+  .vf-tr { top: -2px; right: -2px; border-width: 3px 3px 0 0; border-radius: 0 6px 0 0; }
+  .vf-bl { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; border-radius: 0 0 0 6px; }
+  .vf-br { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; border-radius: 0 0 6px 0; }
+  .viewfinder-label {
+    position: absolute; bottom: -32px; left: 50%; transform: translateX(-50%);
+    font-size: 13px; color: rgba(255,255,255,0.7); white-space: nowrap;
+    text-align: center;
+  }
+  .camera-controls {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 24px; display: flex; align-items: center; justify-content: space-around;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  }
+  .shutter {
+    width: 68px; height: 68px; border-radius: 50%;
+    border: 4px solid #fff; background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .shutter-inner { width: 52px; height: 52px; border-radius: 50%; background: #fff; }
+  .camera-mode {
+    font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.7);
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .camera-mode.active { color: var(--primary); }
+  .camera-mode-icon { font-size: 20px; }
+
+  /* ── Voice Memo ── */
+  .voice-memo-area {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .waveform {
+    display: flex; align-items: center; gap: 3px; height: 80px; margin-bottom: 24px;
+  }
+  .wave-bar {
+    width: 4px; border-radius: 2px; background: var(--primary);
+    animation: wave 0.8s ease-in-out infinite alternate;
+  }
+  @keyframes wave {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }
+  .recording-time {
+    font-size: 48px; font-weight: 300; font-family: var(--font-sans);
+    letter-spacing: 0.02em; margin-bottom: 8px; color: var(--ink);
+  }
+  .recording-label { font-size: 14px; color: var(--ink-muted); margin-bottom: 32px; }
+  .recording-dot {
+    width: 10px; height: 10px; border-radius: 50%; background: var(--error);
+    display: inline-block; margin-right: 6px;
+    animation: pulse 1s ease infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .voice-controls { display: flex; gap: 24px; align-items: center; }
+  .voice-btn {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: none; cursor: pointer; font-size: 20px;
+  }
+  .voice-btn-stop { background: var(--error); color: #fff; width: 68px; height: 68px; }
+  .voice-btn-secondary { background: var(--border-light); color: var(--ink-muted); }
+  .stop-icon { width: 22px; height: 22px; border-radius: 4px; background: #fff; }
+
+  /* ── Scan Result Overlay ── */
+  .scan-result {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: var(--bg-card); border-radius: 20px 20px 0 0;
+    padding: 24px 20px 32px; box-shadow: var(--shadow-3);
+    transform: translateY(0);
+  }
+  .scan-result-handle { width: 36px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 16px; }
+  .scan-result-title { font-family: var(--font-serif); font-size: 18px; font-weight: 400; margin-bottom: 4px; }
+  .scan-result-company { font-size: 13px; color: var(--ink-muted); margin-bottom: 16px; }
+  .scan-field { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border-light); font-size: 14px; }
+  .scan-field-label { color: var(--ink-muted); }
+  .scan-field-value { font-weight: 500; }
+
+  /* ── Screen Label ── */
+  .screen-label {
+    text-align: center; margin-top: 16px;
+  }
+  .screen-label h3 { font-size: 16px; font-weight: 600; }
+  .screen-label p { font-size: 12px; color: var(--ink-muted); margin-top: 4px; }
+
+  /* ── Voice Memo Contact ── */
+  .voice-contact-card {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; margin: 0 20px 16px;
+    background: var(--bg-card); border: 1px solid var(--border-light);
+    border-radius: 12px;
+  }
+  .voice-contact-card .contact-avatar { width: 36px; height: 36px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ Header ═══ -->
+<div class="page-header">
+  <h1>Mobile App Screens</h1>
+  <p>React Native app mockups showing camera capture, badge scanning, and voice memo recording.</p>
+</div>
+
+<!-- ═══ Section 1: Core Screens ═══ -->
+<div class="screens-section">
+  <h2>Core Screens</h2>
+  <div class="section-desc">Contact list, camera capture, and voice memo — the three key mobile experiences.</div>
+
+  <div class="screen-row">
+
+    <!-- ── Screen 1: Contact List ── -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-screen">
+          <div class="status-bar"><span class="time">9:41</span><span class="status-icons">&#9679; &#9679; &#9679;</span></div>
+          <div class="mobile-nav-bar">
+            <div class="nav-title">HD Expo 2026</div>
+            <div class="nav-action">+ Add</div>
+          </div>
+
+          <!-- Search -->
+          <div style="padding:0 20px 12px;">
+            <div style="height:40px; background:var(--bg-card); border:1px solid var(--border); border-radius:8px; display:flex; align-items:center; padding:0 12px; font-size:14px; color:var(--ink-subtle);">Search 47 contacts...</div>
+          </div>
+
+          <div class="screen-content">
+            <div class="contact-item">
+              <div class="contact-avatar" style="background:var(--primary);">SC</div>
+              <div><div class="contact-name">Sarah Chen</div><div class="contact-company">Meridian Design Group</div></div>
+              <span class="contact-badge" style="background:var(--primary-light); color:var(--primary);">New</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-avatar" style="background:var(--clay);">JR</div>
+              <div><div class="contact-name">James Rodriguez</div><div class="contact-company">BuildTech Solutions</div></div>
+              <span class="contact-badge" style="background:var(--clay-light); color:var(--clay);">Existing</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-avatar" style="background:var(--sage);">EN</div>
+              <div><div class="contact-name">Emily Nakamura</div><div class="contact-company">Pacific Interiors</div></div>
+              <span class="contact-badge" style="background:var(--sage-light); color:var(--sage);">New</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-avatar" style="background:var(--slate);">MT</div>
+              <div><div class="contact-name">Marcus Thompson</div><div class="contact-company">Apex Commercial</div></div>
+              <span class="contact-badge" style="background:var(--slate-light); color:var(--slate);">Research</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-avatar" style="background:var(--primary);">LP</div>
+              <div><div class="contact-name">Lisa Patel</div><div class="contact-company">Horizon Architects</div></div>
+              <span class="contact-badge" style="background:var(--primary-light); color:var(--primary);">New</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-avatar" style="background:var(--clay);">DK</div>
+              <div><div class="contact-name">David Kim</div><div class="contact-company">Artisan Surfaces</div></div>
+              <span class="contact-badge" style="background:var(--clay-light); color:var(--clay);">Existing</span>
+            </div>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab active"><div class="tab-icon">&#8962;</div>Home</div>
+            <div class="tab"><div class="tab-icon">&#9776;</div>Lists</div>
+            <div class="tab"><div class="tab-icon" style="font-size:20px;">&#9673;</div>Scan</div>
+            <div class="tab"><div class="tab-icon">&#9786;</div>Profile</div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label"><h3>Contact List</h3><p>Browse and search contacts within a list</p></div>
+    </div>
+
+    <!-- ── Screen 2: Camera / Badge Scanner ── -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-screen" style="background:#000;">
+          <div class="status-bar" style="color:#fff;"><span class="time">9:41</span><span class="status-icons">&#9679; &#9679; &#9679;</span></div>
+
+          <div class="mobile-nav-bar" style="color:#fff;">
+            <div class="back-arrow" style="color:#fff;">&#8249;</div>
+            <div class="nav-title" style="color:#fff;">Scan Contact</div>
+          </div>
+
+          <div class="viewfinder">
+            <div class="viewfinder-frame">
+              <div class="viewfinder-corner vf-tl"></div>
+              <div class="viewfinder-corner vf-tr"></div>
+              <div class="viewfinder-corner vf-bl"></div>
+              <div class="viewfinder-corner vf-br"></div>
+              <div class="viewfinder-label">Position badge or business card within frame</div>
+            </div>
+            <div class="camera-controls">
+              <div class="camera-mode active"><div class="camera-mode-icon">&#9634;</div>Badge</div>
+              <div class="shutter"><div class="shutter-inner"></div></div>
+              <div class="camera-mode"><div class="camera-mode-icon">&#9645;</div>Card</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label"><h3>Badge / Card Scanner</h3><p>Camera access for OCR scanning</p></div>
+    </div>
+
+    <!-- ── Screen 3: Scan Result ── -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-screen" style="background:#111;">
+          <div class="status-bar" style="color:#fff;"><span class="time">9:41</span><span class="status-icons">&#9679; &#9679; &#9679;</span></div>
+
+          <div class="mobile-nav-bar" style="color:#fff;">
+            <div class="back-arrow" style="color:#fff;">&#8249;</div>
+            <div class="nav-title" style="color:#fff;">Scan Contact</div>
+          </div>
+
+          <div class="viewfinder" style="flex:1; opacity:0.3;">
+            <div class="viewfinder-frame" style="border-color:var(--sage);">
+              <div class="viewfinder-corner vf-tl" style="border-color:var(--sage);"></div>
+              <div class="viewfinder-corner vf-tr" style="border-color:var(--sage);"></div>
+              <div class="viewfinder-corner vf-bl" style="border-color:var(--sage);"></div>
+              <div class="viewfinder-corner vf-br" style="border-color:var(--sage);"></div>
+            </div>
+          </div>
+
+          <!-- Bottom sheet with scan results -->
+          <div class="scan-result">
+            <div class="scan-result-handle"></div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:var(--sage);"></div>
+              <span style="font-size:11px; font-weight:600; color:var(--sage); text-transform:uppercase; letter-spacing:0.06em;">Scanned Successfully</span>
+            </div>
+            <div class="scan-result-title">Rachel Okonkwo</div>
+            <div class="scan-result-company">GreenBuild Inc. &bull; Head of Partnerships</div>
+            <div class="scan-field"><span class="scan-field-label">Email</span><span class="scan-field-value">r.okonkwo@greenbuild.com</span></div>
+            <div class="scan-field"><span class="scan-field-label">Phone</span><span class="scan-field-value">(312) 555-0147</span></div>
+            <div class="scan-field"><span class="scan-field-label">Add to List</span><span class="scan-field-value" style="color:var(--primary);">HD Expo 2026 &#8250;</span></div>
+            <div style="display:flex; gap:12px; margin-top:20px;">
+              <button class="mobile-btn" style="background:var(--primary); color:#fff; flex:1;">Save Contact</button>
+              <button class="mobile-btn" style="background:var(--border-light); color:var(--ink-secondary); width:48px; flex:none;">&#128196;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label"><h3>Scan Result</h3><p>OCR-extracted fields with list selector</p></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ Section 2: Voice Memo & Entry ═══ -->
+<div class="screens-section" style="background:var(--bg-card); border-top:1px solid var(--border-light);">
+  <h2>Voice Memo & Entry</h2>
+  <div class="section-desc">Record voice notes at the booth and manually add contacts with the form.</div>
+
+  <div class="screen-row">
+
+    <!-- ── Screen 4: Voice Memo Recording ── -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-screen">
+          <div class="status-bar"><span class="time">9:41</span><span class="status-icons">&#9679; &#9679; &#9679;</span></div>
+          <div class="mobile-nav-bar">
+            <div class="back-arrow">&#8249;</div>
+            <div class="nav-title">Voice Note</div>
+            <div class="nav-action">Done</div>
+          </div>
+
+          <!-- Attached to contact -->
+          <div class="voice-contact-card">
+            <div class="contact-avatar" style="background:var(--primary); width:36px; height:36px; font-size:12px;">SC</div>
+            <div><div style="font-size:14px; font-weight:500;">Sarah Chen</div><div style="font-size:11px; color:var(--ink-muted);">Meridian Design Group</div></div>
+          </div>
+
+          <div class="voice-memo-area">
+            <!-- Waveform -->
+            <div class="waveform">
+              <div class="wave-bar" style="height:12px; animation-delay:0s;"></div>
+              <div class="wave-bar" style="height:28px; animation-delay:0.1s;"></div>
+              <div class="wave-bar" style="height:44px; animation-delay:0.15s;"></div>
+              <div class="wave-bar" style="height:56px; animation-delay:0.2s;"></div>
+              <div class="wave-bar" style="height:72px; animation-delay:0.25s;"></div>
+              <div class="wave-bar" style="height:48px; animation-delay:0.3s;"></div>
+              <div class="wave-bar" style="height:64px; animation-delay:0.35s;"></div>
+              <div class="wave-bar" style="height:36px; animation-delay:0.4s;"></div>
+              <div class="wave-bar" style="height:52px; animation-delay:0.45s;"></div>
+              <div class="wave-bar" style="height:72px; animation-delay:0.5s;"></div>
+              <div class="wave-bar" style="height:44px; animation-delay:0.55s;"></div>
+              <div class="wave-bar" style="height:60px; animation-delay:0.6s;"></div>
+              <div class="wave-bar" style="height:32px; animation-delay:0.65s;"></div>
+              <div class="wave-bar" style="height:48px; animation-delay:0.7s;"></div>
+              <div class="wave-bar" style="height:20px; animation-delay:0.75s;"></div>
+              <div class="wave-bar" style="height:56px; animation-delay:0.8s;"></div>
+              <div class="wave-bar" style="height:40px; animation-delay:0.85s;"></div>
+              <div class="wave-bar" style="height:68px; animation-delay:0.9s;"></div>
+              <div class="wave-bar" style="height:28px; animation-delay:0.95s;"></div>
+              <div class="wave-bar" style="height:44px; animation-delay:1s;"></div>
+            </div>
+
+            <div class="recording-time">0:23</div>
+            <div class="recording-label"><span class="recording-dot"></span>Recording</div>
+
+            <div class="voice-controls">
+              <button class="voice-btn voice-btn-secondary" title="Cancel">&#10005;</button>
+              <button class="voice-btn voice-btn-stop" title="Stop"><div class="stop-icon"></div></button>
+              <button class="voice-btn voice-btn-secondary" title="Pause">&#10074;&#10074;</button>
+            </div>
+          </div>
+
+          <div style="padding:0 20px 12px;">
+            <div style="font-size:11px; color:var(--ink-muted); text-align:center; line-height:1.5;">Voice notes are transcribed by AI and attached to the contact as booth notes.</div>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab"><div class="tab-icon">&#8962;</div>Home</div>
+            <div class="tab"><div class="tab-icon">&#9776;</div>Lists</div>
+            <div class="tab active"><div class="tab-icon" style="font-size:20px;">&#9673;</div>Scan</div>
+            <div class="tab"><div class="tab-icon">&#9786;</div>Profile</div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label"><h3>Voice Memo Recording</h3><p>Animated waveform with contact attachment</p></div>
+    </div>
+
+    <!-- ── Screen 5: Manual Contact Entry ── -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-screen">
+          <div class="status-bar"><span class="time">9:41</span><span class="status-icons">&#9679; &#9679; &#9679;</span></div>
+          <div class="mobile-nav-bar">
+            <div class="back-arrow">&#8249;</div>
+            <div class="nav-title">Add Contact</div>
+          </div>
+
+          <div class="screen-content" style="padding-top:8px;">
+            <div class="mobile-form-group">
+              <label class="mobile-label">First Name</label>
+              <input class="mobile-input" placeholder="Sarah" value="Sarah" />
+            </div>
+            <div class="mobile-form-group">
+              <label class="mobile-label">Last Name</label>
+              <input class="mobile-input" placeholder="Chen" value="Chen" />
+            </div>
+            <div class="mobile-form-group">
+              <label class="mobile-label">Company</label>
+              <input class="mobile-input" placeholder="Company name" value="Meridian Design Group" />
+            </div>
+            <div class="mobile-form-group">
+              <label class="mobile-label">Email</label>
+              <input class="mobile-input" type="email" placeholder="email@company.com" value="s.chen@meridian.com" />
+            </div>
+            <div class="mobile-form-group">
+              <label class="mobile-label">Add to List</label>
+              <div style="height:44px; border:1px solid var(--border); border-radius:8px; display:flex; align-items:center; padding:0 14px; justify-content:space-between; background:var(--bg-card);">
+                <span style="font-size:14px;">HD Expo 2026</span>
+                <span style="color:var(--ink-subtle);">&#8250;</span>
+              </div>
+            </div>
+            <div class="mobile-form-group">
+              <label class="mobile-label">Notes</label>
+              <div style="min-height:72px; border:1px solid var(--border); border-radius:8px; padding:10px 14px; font-size:14px; color:var(--ink-secondary); background:var(--bg-card); line-height:1.5;">Met at the hospitality design panel. Interested in AI for follow-up.</div>
+            </div>
+            <div style="padding:0 20px; display:flex; gap:12px;">
+              <button class="mobile-btn" style="background:var(--border-light); color:var(--ink-secondary); flex:0 0 48px;">&#127908;</button>
+              <button class="mobile-btn" style="background:var(--primary); color:#fff; flex:1;">Save Contact</button>
+            </div>
+          </div>
+
+          <div class="tab-bar" style="margin-top:12px;">
+            <div class="tab"><div class="tab-icon">&#8962;</div>Home</div>
+            <div class="tab active"><div class="tab-icon">&#9776;</div>Lists</div>
+            <div class="tab"><div class="tab-icon" style="font-size:20px;">&#9673;</div>Scan</div>
+            <div class="tab"><div class="tab-icon">&#9786;</div>Profile</div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label"><h3>Manual Contact Entry</h3><p>Form with voice memo button and list selector</p></div>
+    </div>
+
+    <!-- ── Screen 6: Voice Memo Playback ── -->
+    <div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-screen">
+          <div class="status-bar"><span class="time">9:41</span><span class="status-icons">&#9679; &#9679; &#9679;</span></div>
+          <div class="mobile-nav-bar">
+            <div class="back-arrow">&#8249;</div>
+            <div class="nav-title">Sarah Chen</div>
+            <div class="nav-action">Edit</div>
+          </div>
+
+          <div class="screen-content">
+            <!-- Contact Header -->
+            <div style="text-align:center; padding:20px;">
+              <div class="contact-avatar" style="background:var(--primary); width:64px; height:64px; font-size:22px; margin:0 auto 12px;">SC</div>
+              <div style="font-family:var(--font-serif); font-size:22px; font-weight:400;">Sarah Chen</div>
+              <div style="font-size:13px; color:var(--ink-muted); margin-top:4px;">Meridian Design Group &bull; VP of Marketing</div>
+              <span class="contact-badge" style="background:var(--primary-light); color:var(--primary); margin-top:8px; display:inline-block;">Pre-Engagement</span>
+            </div>
+
+            <!-- Info Section -->
+            <div style="padding:0 20px;">
+              <div class="scan-field"><span class="scan-field-label">Email</span><span class="scan-field-value" style="color:var(--primary);">s.chen@meridian.com</span></div>
+              <div class="scan-field"><span class="scan-field-label">Phone</span><span class="scan-field-value">(213) 555-0192</span></div>
+              <div class="scan-field"><span class="scan-field-label">List</span><span class="scan-field-value">HD Expo 2026</span></div>
+            </div>
+
+            <!-- Voice Memo -->
+            <div style="margin:20px; background:var(--bg-warm); border-radius:12px; padding:16px;">
+              <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-muted); margin-bottom:10px;">Voice Note</div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:36px; height:36px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <div style="width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent #fff; margin-left:2px;"></div>
+                </div>
+                <div style="flex:1;">
+                  <div style="height:4px; background:var(--border); border-radius:2px; position:relative;">
+                    <div style="height:4px; background:var(--primary); border-radius:2px; width:35%;"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; margin-top:4px;">
+                    <span style="font-size:10px; color:var(--ink-subtle);">0:08</span>
+                    <span style="font-size:10px; color:var(--ink-subtle);">0:23</span>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:12px; font-size:12px; color:var(--ink-secondary); line-height:1.6; font-style:italic;">
+                "Met at the hospitality design panel. Very interested in AI for post-show follow-up. Wants to see a demo with her team next week. Mentioned they currently lose about 60% of leads..."
+              </div>
+              <div style="font-size:10px; color:var(--ink-subtle); margin-top:6px;">AI Transcription &bull; Today 2:34 PM</div>
+            </div>
+
+            <!-- Notes -->
+            <div style="padding:0 20px 20px;">
+              <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-muted); margin-bottom:8px;">Notes</div>
+              <div style="font-size:13px; color:var(--ink-secondary); line-height:1.6;">Met at the hospitality design panel. Interested in AI for follow-up. Wants to schedule demo with team.</div>
+            </div>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab active"><div class="tab-icon">&#8962;</div>Home</div>
+            <div class="tab"><div class="tab-icon">&#9776;</div>Lists</div>
+            <div class="tab"><div class="tab-icon" style="font-size:20px;">&#9673;</div>Scan</div>
+            <div class="tab"><div class="tab-icon">&#9786;</div>Profile</div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label"><h3>Contact Detail + Voice Playback</h3><p>AI-transcribed voice note with playback</p></div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Filled rounded square, large lowercase e perfectly centered. Bold and settled. -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
+  <path d="M44,32 L20,32 Q14,32 14,24 Q14,10 32,10 Q50,10 50,32 Q50,52 32,54 Q18,55 14,44" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

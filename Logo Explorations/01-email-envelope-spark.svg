@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Theme: Email + Magic — Envelope with a spark/sparkle rising from the flap -->
+  <rect x="8" y="20" width="48" height="32" rx="4" fill="#2a9d8f"/>
+  <polyline points="8,20 32,40 56,20" fill="none" stroke="#1e7a6f" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Sparkle -->
+  <path d="M44,14 L45.5,9 L47,14 L52,15.5 L47,17 L45.5,22 L44,17 L39,15.5 Z" fill="#fff"/>
+  <circle cx="38" cy="10" r="1.5" fill="#fff" opacity="0.6"/>
+</svg>

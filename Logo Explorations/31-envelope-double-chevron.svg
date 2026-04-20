@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Envelope body with the flap replaced by a double chevron. The two chevrons nest together where the flap would be, pointing forward. Uniform stroke, generous rounding. -->
+  <path d="
+    M8,26 L8,50 Q8,56 14,56 L50,56 Q56,56 56,50 L56,26
+  " fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Double chevron as the flap -->
+  <polyline points="8,26 26,40 44,26" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="20,26 38,40 56,26" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

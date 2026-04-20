@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Open envelope with flap lifted, two chevrons rising out of it like content being sent. The chevrons emerge naturally from where a letter would come out. -->
+  <!-- Envelope body -->
+  <path d="
+    M8,30 L8,52 Q8,58 14,58 L50,58 Q56,58 56,52 L56,30
+  " fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom V of envelope -->
+  <polyline points="8,30 32,48 56,30" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Two chevrons rising upward from the opening -->
+  <polyline points="22,26 32,18 42,26" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="22,16 32,8 42,16" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

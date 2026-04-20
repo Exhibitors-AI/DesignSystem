@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- One continuous stroke that draws both an E and an envelope in a single gesture. Starts at top, flows down the E spine, across the bottom, up into an envelope flap chevron. -->
+  <path d="
+    M42,10 L14,10
+    Q8,10 8,16 L8,48
+    Q8,54 14,54 L50,54
+    Q56,54 56,48 L56,16
+    Q56,10 50,10 L46,10
+  " fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Flap as chevron -->
+  <polyline points="10,14 32,32 54,14" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- E middle arm inside the envelope -->
+  <line x1="14" y1="34" x2="36" y2="34" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

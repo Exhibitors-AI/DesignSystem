@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Calligraphic lowercase e with varying stroke width implied by the path. Feels hand-drawn but precise. -->
+  <path d="M46,32 L14,32 Q8,32 8,22 Q8,4 32,4 Q56,4 56,32 Q56,56 32,60 Q14,62 8,48" fill="none" stroke="#2a9d8f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

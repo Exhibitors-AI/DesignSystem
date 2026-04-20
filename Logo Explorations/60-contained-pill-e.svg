@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Pill/stadium shape with lowercase e. Wider than tall, feels modern. -->
+  <rect x="2" y="12" width="60" height="40" rx="20" fill="#2a9d8f"/>
+  <path d="M40,30 L24,30 Q20,30 20,25 Q20,18 32,18 Q44,18 44,30 Q44,42 32,44 Q24,45 20,39" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

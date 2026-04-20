@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Theme: Speed + Confidence — Bold arrow/chevron pointing forward, suggesting momentum -->
+  <path d="M14,12 L42,32 L14,52 L22,32 Z" fill="#2a9d8f"/>
+  <path d="M30,20 L50,32 L30,44 L36,32 Z" fill="#1e7a6f"/>
+</svg>

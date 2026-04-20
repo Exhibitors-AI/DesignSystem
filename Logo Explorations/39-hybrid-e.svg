@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Open envelope with the E formed by the envelope's left edge (spine) and three bars extending left. The chevrons rise from the opening. Combines all three sources into one mark. -->
+  <!-- Envelope body forms the right side -->
+  <path d="M24,30 L24,54 Q24,58 28,58 L52,58 Q56,58 56,54 L56,30" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Envelope V -->
+  <polyline points="24,30 40,46 56,30" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- E: spine is the envelope's left wall extended upward, three bars go left -->
+  <line x1="24" y1="6" x2="24" y2="30" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round"/>
+  <line x1="6" y1="6" x2="24" y2="6" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round"/>
+  <line x1="8" y1="18" x2="24" y2="18" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round"/>
+  <line x1="6" y1="30" x2="24" y2="30" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round"/>
+</svg>

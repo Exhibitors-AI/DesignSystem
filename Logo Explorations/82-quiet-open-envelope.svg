@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Open envelope with flap up. Calm but ready. Not in motion, just open. -->
+  <path d="M8,28 L8,52 Q8,56 12,56 L52,56 Q56,56 56,52 L56,28" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="8,28 32,44 56,28" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="8,28 32,12 56,28" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

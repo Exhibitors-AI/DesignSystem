@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Tilted open envelope (like Inbox ref) with two chevrons rising from it. The envelope sits at an angle suggesting dynamism. The chevrons are tight and close together. -->
+  <!-- Envelope body, tilted -->
+  <path d="M14,32 L10,52 Q9,56 13,57 L49,57 Q53,57 53,53 L53,32" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Envelope V flap -->
+  <polyline points="14,32 33,48 53,32" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Two tight chevrons rising, slightly angled to match tilt -->
+  <polyline points="22,26 33,17 44,26" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="24,14 33,7 42,14" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

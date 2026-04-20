@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Theme: Magic — Wand touching an envelope, transforming it -->
+  <rect x="10" y="26" width="36" height="24" rx="3" fill="#2a9d8f"/>
+  <polyline points="10,26 28,42 46,26" fill="none" stroke="#1e7a6f" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Wand (diagonal) -->
+  <line x1="42" y1="10" x2="54" y2="38" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <!-- Sparkles around wand tip -->
+  <path d="M40,8 L41,5 L42,8 L45,9 L42,10 L41,13 L40,10 L37,9 Z" fill="#c2783a"/>
+  <circle cx="48" cy="7" r="1.5" fill="#c2783a" opacity="0.6"/>
+  <circle cx="36" cy="13" r="1" fill="#c2783a" opacity="0.4"/>
+</svg>

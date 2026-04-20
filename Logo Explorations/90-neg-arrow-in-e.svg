@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Large lowercase e where the counter (inside space) forms an arrow or chevron shape. -->
+  <path d="M46,32 L18,32 Q10,32 10,20 Q10,2 32,2 Q54,2 54,32 Q54,58 32,62 Q14,64 8,46" fill="#2a9d8f" stroke="none"/>
+  <!-- Arrow appears in the white counter space -->
+  <polygon points="28,14 42,24 28,24" fill="#faf8f4"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Closest to the Inbox reference structure: envelope outline on the right, horizontal chevron-bars on the left feeding into it. The bars connect to the envelope's left edge, making them feel like content flowing in. -->
+  <!-- Envelope (right portion) -->
+  <path d="M30,12 L54,12 Q58,12 58,16 L58,48 Q58,52 54,52 L30,52" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Flap -->
+  <polyline points="30,16 44,30 58,16" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Three chevron-bars from left, pointing right into the envelope -->
+  <polyline points="6,18 18,18 26,24" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="6,32 18,32 26,32" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="6,46 18,46 26,40" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

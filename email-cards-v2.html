@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exhibitors.ai — Email Cards V2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --primary: #2a9d8f; --primary-hover: #249185; --primary-light: #e0f3f0;
+    --clay: #c2783a; --clay-light: #f5ece0;
+    --sage: #3d9960; --sage-light: #e2f2e6;
+    --slate: #6882a0; --slate-light: #e8edf3;
+    --ink: #1a1a1a; --ink-secondary: #444; --ink-muted: #777; --ink-subtle: #aaa;
+    --bg-page: #faf8f4; --bg-warm: #f5efe6; --bg-card: #fff;
+    --border: #e0dbd2; --border-light: #efece6;
+    --nav-bg: #1a1a1a; --nav-hover: #2a2a2a;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --shadow-2: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-sans); background: var(--bg-page); color: var(--ink); -webkit-font-smoothing: antialiased; display: flex; min-height: 100vh; }
+
+  /* ── Sidebar ── */
+  .sidebar { width: 220px; background: var(--nav-bg); color: #999; padding: 20px 12px; display: flex; flex-direction: column; flex-shrink: 0; position: fixed; top: 0; left: 0; bottom: 0; }
+  .brand { display: flex; align-items: center; gap: 10px; padding: 0 12px 20px; border-bottom: 1px solid #2a2a2a; margin-bottom: 16px; }
+  .brand-icon { width: 32px; height: 32px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700; }
+  .brand-name { font-family: var(--font-serif); font-size: 16px; font-weight: 300; color: #fff; }
+  .nav-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #555; padding: 8px 12px 4px; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: all 0.15s ease; color: #999; }
+  .nav-item:hover { background: var(--nav-hover); color: #ccc; }
+  .nav-item.active { background: var(--nav-hover); color: #fff; }
+  .nav-icon { width: 18px; height: 18px; border-radius: 3px; background: currentColor; opacity: 0.4; flex-shrink: 0; }
+  .nav-item.active .nav-icon { opacity: 0.8; }
+  .sidebar-spacer { flex: 1; }
+  .user-section { padding: 16px 12px; border-top: 1px solid #2a2a2a; display: flex; align-items: center; gap: 10px; }
+  .user-avatar { width: 28px; height: 28px; border-radius: 50%; background: #444; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #ccc; }
+  .user-name { font-size: 12px; color: #ccc; }
+  .user-org { font-size: 10px; color: #666; }
+
+  /* ── Main ── */
+  .main { flex: 1; margin-left: 220px; padding: 40px 48px; }
+
+  /* ── Top Bar ── */
+  .top-bar { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 24px; }
+  .page-title { font-family: var(--font-serif); font-size: 36px; font-weight: 400; letter-spacing: -0.01em; }
+  .filter-bar { display: flex; gap: 12px; align-items: center; }
+  .search-input {
+    font-family: var(--font-sans); font-size: 13px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg-card); color: var(--ink); outline: none; width: 220px; height: 36px;
+    transition: border-color 0.15s ease;
+  }
+  .search-input:focus { border-color: var(--primary); }
+  .search-input::placeholder { color: var(--ink-subtle); }
+  .select-input {
+    font-family: var(--font-sans); font-size: 12px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg-card); color: var(--ink-secondary); height: 36px; cursor: pointer;
+  }
+
+  /* ── List Badges ── */
+  .badge-row { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .list-badge {
+    font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 4px 10px; border-radius: 3px; cursor: pointer; transition: opacity 0.15s ease;
+  }
+  .list-badge:hover { opacity: 0.8; }
+
+  /* ── Masonry ── */
+  .masonry { column-count: 3; column-gap: 24px; }
+
+  /* ── Email Card ── */
+  .email-card {
+    background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 4px;
+    border-left: 3px solid; margin-bottom: 24px; break-inside: avoid;
+    transition: box-shadow 0.15s ease;
+  }
+  .email-card:hover { box-shadow: var(--shadow-2); }
+
+  .ec-header { padding: 16px 20px 12px; }
+  .ec-name { font-family: var(--font-serif); font-size: 18px; font-weight: 400; letter-spacing: -0.01em; }
+  .ec-company { font-size: 12px; color: var(--ink-secondary); margin-top: 2px; }
+  .ec-role { font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+
+  .ec-meta { padding: 0 20px 12px; display: flex; gap: 16px; font-size: 11px; color: var(--ink-subtle); }
+
+  .ec-divider { height: 1px; background: var(--border-light); margin: 0 20px; }
+
+  .ec-body {
+    padding: 16px 20px; font-size: 13.5px; line-height: 1.8; color: var(--ink-secondary);
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  .ec-footer {
+    padding: 12px 20px; border-top: 1px solid var(--border-light);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .tone-badge { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--ink-muted); }
+  .tone-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .ec-actions { display: flex; gap: 4px; }
+  .ec-action {
+    width: 30px; height: 30px; border-radius: 6px; border: none; background: transparent;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: var(--ink-subtle); font-size: 14px; transition: all 0.15s ease;
+  }
+  .ec-action:hover { background: var(--bg-warm); color: var(--ink-secondary); }
+</style>
+</head>
+<body>
+
+<!-- ═══ Sidebar ═══ -->
+<nav class="sidebar">
+  <div class="brand"><div class="brand-icon">E</div><div class="brand-name">Exhibitors</div></div>
+  <div class="nav-label">Main</div>
+  <div class="nav-item"><div class="nav-icon"></div>Dashboard</div>
+  <div class="nav-item"><div class="nav-icon"></div>Lists</div>
+  <div class="nav-item"><div class="nav-icon"></div>Contacts</div>
+  <div class="nav-item active"><div class="nav-icon"></div>Emails</div>
+  <div class="nav-label" style="margin-top:16px;">Settings</div>
+  <div class="nav-item"><div class="nav-icon"></div>Profiles</div>
+  <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+  <div class="sidebar-spacer"></div>
+  <div class="user-section"><div class="user-avatar">CL</div><div><div class="user-name">Chris L.</div><div class="user-org">Exhibitors.ai</div></div></div>
+</nav>
+
+<!-- ═══ Main ═══ -->
+<div class="main">
+  <div class="top-bar">
+    <h1 class="page-title">Generated Emails</h1>
+    <div class="filter-bar">
+      <input class="search-input" placeholder="Search emails..." />
+      <select class="select-input"><option>All Lists</option><option>HD Expo 2026</option><option>IBS 2026</option><option>KBIS Prospects</option></select>
+      <select class="select-input"><option>Newest First</option><option>Oldest First</option><option>By Name</option></select>
+    </div>
+  </div>
+
+  <div class="badge-row">
+    <span class="list-badge" style="background:var(--primary-light); color:var(--primary);">HD Expo 2026</span>
+    <span class="list-badge" style="background:var(--clay-light); color:var(--clay);">IBS 2026</span>
+    <span class="list-badge" style="background:var(--sage-light); color:var(--sage);">KBIS Prospects</span>
+    <span class="list-badge" style="background:var(--slate-light); color:var(--slate);">NeoCon Leads</span>
+  </div>
+
+  <div class="masonry">
+    <!-- Card 1: Teal -->
+    <div class="email-card" style="border-left-color:var(--primary);">
+      <div class="ec-header"><div class="ec-name">Sarah Chen</div><div class="ec-company">Meridian Design Group</div><div class="ec-role">VP of Marketing</div></div>
+      <div class="ec-meta"><span>HD Expo 2026</span><span>2 min ago</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">Hi Sarah, it was great connecting at HD Expo last week. Your approach to hospitality design really resonated with our team. I wanted to follow up on our conversation about streamlining the post-show follow-up process — I think there's a real opportunity to save your team significant time.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--primary);"></div>Professional</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+
+    <!-- Card 2: Clay -->
+    <div class="email-card" style="border-left-color:var(--clay);">
+      <div class="ec-header"><div class="ec-name">James Rodriguez</div><div class="ec-company">BuildTech Solutions</div><div class="ec-role">Director of Sales</div></div>
+      <div class="ec-meta"><span>IBS 2026</span><span>1 hour ago</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">James, thanks for stopping by our booth at IBS. It was great catching up on how BuildTech is expanding into the mid-Atlantic market. As promised, I wanted to share some insights on how our platform has been helping teams like yours cut follow-up time by 80%.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--clay);"></div>Casual</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+
+    <!-- Card 3: Sage -->
+    <div class="email-card" style="border-left-color:var(--sage);">
+      <div class="ec-header"><div class="ec-name">Emily Nakamura</div><div class="ec-company">Pacific Interiors</div><div class="ec-role">Senior Buyer</div></div>
+      <div class="ec-meta"><span>KBIS Prospects</span><span>3 hours ago</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">Emily, I really enjoyed our conversation at KBIS about the challenges of managing vendor relationships across multiple trade shows. Your point about needing a centralized system for all post-show communication was spot on.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--sage);"></div>Professional</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+
+    <!-- Card 4: Slate -->
+    <div class="email-card" style="border-left-color:var(--slate);">
+      <div class="ec-header"><div class="ec-name">Marcus Thompson</div><div class="ec-company">Apex Commercial</div><div class="ec-role">Project Manager</div></div>
+      <div class="ec-meta"><span>NeoCon Leads</span><span>Yesterday</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">Marcus, it was a pleasure meeting you at NeoCon. Your team's work on the downtown Chicago renovation project sounds fascinating. I'd love to schedule a quick call to discuss how we might support your procurement process for upcoming projects.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--slate);"></div>Default</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+
+    <!-- Card 5: Teal -->
+    <div class="email-card" style="border-left-color:var(--primary);">
+      <div class="ec-header"><div class="ec-name">Lisa Patel</div><div class="ec-company">Horizon Architects</div><div class="ec-role">Principal</div></div>
+      <div class="ec-meta"><span>HD Expo 2026</span><span>Yesterday</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">Lisa, thank you for spending time at our demo during HD Expo. The questions you raised about integrating AI-generated follow-ups with your existing CRM workflow were exactly the kind of feedback we're looking for. I'd love to set up a 20-minute call to walk you through how other architecture firms are using the platform.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--primary);"></div>Professional</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+
+    <!-- Card 6: Clay -->
+    <div class="email-card" style="border-left-color:var(--clay);">
+      <div class="ec-header"><div class="ec-name">David Kim</div><div class="ec-company">Artisan Surfaces</div><div class="ec-role">CEO</div></div>
+      <div class="ec-meta"><span>IBS 2026</span><span>2 days ago</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">David, great running into you again at IBS! Always good to see Artisan Surfaces representing. Wanted to loop back on our chat about the post-show follow-up bottleneck your sales team hits every quarter.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--clay);"></div>Casual</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+
+    <!-- Card 7: Sage -->
+    <div class="email-card" style="border-left-color:var(--sage);">
+      <div class="ec-header"><div class="ec-name">Rachel Okonkwo</div><div class="ec-company">GreenBuild Inc.</div><div class="ec-role">Head of Partnerships</div></div>
+      <div class="ec-meta"><span>KBIS Prospects</span><span>2 days ago</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">Rachel, it was wonderful connecting at the KBIS sustainability panel. Your commitment to eco-friendly building materials aligns perfectly with what many of our users are looking for. I'd love to explore potential partnership opportunities.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--sage);"></div>Professional</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+
+    <!-- Card 8: Primary -->
+    <div class="email-card" style="border-left-color:var(--primary);">
+      <div class="ec-header"><div class="ec-name">Tom Brennan</div><div class="ec-company">Lux Living Group</div><div class="ec-role">VP Business Development</div></div>
+      <div class="ec-meta"><span>HD Expo 2026</span><span>3 days ago</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">Tom, thanks for the conversation at HD Expo about Lux Living's expansion into the luxury hospitality segment. The speed-to-follow-up challenge you described is something we hear from nearly every exhibitor we talk to. I think you'll find our approach refreshingly different.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--primary);"></div>Default</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+
+    <!-- Card 9: Slate -->
+    <div class="email-card" style="border-left-color:var(--slate);">
+      <div class="ec-header"><div class="ec-name">Ana Morales</div><div class="ec-company">Studio Verde</div><div class="ec-role">Design Director</div></div>
+      <div class="ec-meta"><span>NeoCon Leads</span><span>3 days ago</span></div>
+      <div class="ec-divider"></div>
+      <div class="ec-body">Ana, I was impressed by Studio Verde's booth at NeoCon — the biophilic design installations were stunning. I'd love to hear more about how your team approaches post-show outreach and whether there are pain points we might be able to help with.</div>
+      <div class="ec-footer">
+        <div class="tone-badge"><div class="tone-dot" style="background:var(--slate);"></div>Professional</div>
+        <div class="ec-actions"><button class="ec-action" title="Copy">&#128203;</button><button class="ec-action" title="Edit">&#9998;</button><button class="ec-action" title="Send">&#9993;</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

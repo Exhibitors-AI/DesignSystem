@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Single-stroke e drawn in one fluid motion. Starts at the tail, curves up and around, crosses itself. -->
+  <path d="M16,48 Q8,56 20,58 Q36,60 48,48 Q58,36 58,28 Q58,6 32,6 Q6,6 6,28 Q6,36 16,36 L52,36" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

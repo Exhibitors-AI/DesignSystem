@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Three stacked chevrons that together read as an E. Each chevron is a single stroke flowing left to right. Unified rhythm. -->
+  <polyline points="16,10 16,16 48,16" fill="none" stroke="#2a9d8f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="16,29 16,35 42,35" fill="none" stroke="#2a9d8f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="16,48 16,54 48,54" fill="none" stroke="#2a9d8f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

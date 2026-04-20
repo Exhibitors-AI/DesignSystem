@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Same as 45 but with rounded curves instead of sharp angles. The zigzag bars become a flowing S-curve that feeds into the envelope. Softer, more fluid. -->
+  <path d="
+    M4,16 Q12,16 20,16
+    Q4,24 4,32 Q4,40 20,32
+    Q4,40 4,48 Q12,48 20,48
+    Q20,52 20,56 L52,32 L20,8 Q20,12 20,16
+  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

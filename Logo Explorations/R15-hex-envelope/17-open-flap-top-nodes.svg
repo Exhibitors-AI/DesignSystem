@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+
+<path d="M12,30 L12,48 Q12,52 16,54 L48,54 Q52,52 52,48 L52,30" fill="none" stroke="#2a9d8f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="12,30 32,44 52,30" fill="none" stroke="#2a9d8f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="12,30 32,16 52,30" fill="none" stroke="#2a9d8f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="6" cy="8" r="3.5" fill="#2a9d8f"/><circle cx="32" cy="4" r="3.5" fill="#2a9d8f"/><circle cx="58" cy="8" r="3.5" fill="#2a9d8f"/>
+<line x1="30" y1="16" x2="9" y2="11" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="32" y1="16" x2="32" y2="7" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="34" y1="16" x2="55" y2="11" stroke="#2a9d8f" stroke-width="2.5" stroke-linecap="round"/>
+
+</svg>

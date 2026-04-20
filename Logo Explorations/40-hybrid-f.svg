@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Most integrated version. The envelope and the E share the same left wall. Bars extend left from the shared spine, envelope extends right. The double chevron is formed by the flap and an echo above it. One object, one gesture. -->
+  <!-- Shared spine -->
+  <line x1="22" y1="6" x2="22" y2="56" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round"/>
+  <!-- E bars extending left -->
+  <line x1="6" y1="6" x2="22" y2="6" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round"/>
+  <line x1="8" y1="20" x2="22" y2="20" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round"/>
+  <!-- Envelope body extending right from shared spine -->
+  <path d="M22,20 L54,20 Q58,20 58,24 L58,52 Q58,56 54,56 L22,56" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Flap chevron -->
+  <polyline points="22,24 40,38 58,24" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Inbox reference recreated as one continuous line. The path starts at the bars on the left, sweeps right into the tilted envelope body, traces the flap, and returns. Single stroke, single color. -->
+  <path d="
+    M6,22 L22,22
+    M6,32 L22,32
+    M6,42 L22,42
+    L22,56 L50,32 L22,8 L22,22
+    M22,32 L50,32
+    M38,20 L50,32 L38,44
+  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
