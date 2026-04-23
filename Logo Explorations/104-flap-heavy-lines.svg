@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Heavier lines and flap. Bolder, more authoritative. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
-  <polyline points="14,16 32,28 50,16" fill="none" stroke="#faf8f4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="14" y1="36" x2="44" y2="36" stroke="#faf8f4" stroke-width="6" stroke-linecap="round"/>
-  <line x1="14" y1="48" x2="50" y2="48" stroke="#faf8f4" stroke-width="6" stroke-linecap="round"/>
-</svg>

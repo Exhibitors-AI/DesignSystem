@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Theme: Speed + Technology — Letter E formed from a lightning bolt shape -->
-  <path d="M20,8 L44,8 L44,14 L28,14 L28,28 L40,28 L40,34 L28,34 L28,50 L44,50 L44,56 L20,56 Z" fill="#2a9d8f"/>
-  <!-- Speed accent: angled cut through the E -->
-  <path d="M44,8 L36,14 L44,14 Z" fill="#1e7a6f"/>
-  <path d="M44,50 L36,56 L44,56 Z" fill="#1e7a6f"/>
-</svg>

@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Lowercase e where the crossbar IS an envelope flap V shape. The round body reads as both the letter e and an envelope seen from the front. One stroke. -->
-  <path d="
-    M12,44 Q8,52 18,56 Q32,60 46,52 Q56,46 56,32
-    Q56,10 32,10 Q8,10 8,32
-    L8,32 L30,18 L52,32
-  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

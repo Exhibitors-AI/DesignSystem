@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Left half is a filled shape, right half is open. Where they meet, the negative space reads as both e and envelope. -->
-  <path d="M32,4 Q8,4 8,32 Q8,60 32,60 L32,4 Z" fill="#2a9d8f"/>
-  <path d="M32,4 Q56,4 56,32 Q56,60 32,60" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round"/>
-  <line x1="8" y1="32" x2="56" y2="32" stroke="#faf8f4" stroke-width="4" stroke-linecap="round"/>
-</svg>

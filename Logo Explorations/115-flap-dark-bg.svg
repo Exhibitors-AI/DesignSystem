@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Dark container variant. Teal lines and flap on dark background. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#1a1a1a"/>
-  <polyline points="16,16 32,26 48,16" fill="none" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="16" y1="34" x2="48" y2="34" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round"/>
-  <line x1="16" y1="43" x2="42" y2="43" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round"/>
-  <line x1="16" y1="50" x2="48" y2="50" stroke="#2a9d8f" stroke-width="4.5" stroke-linecap="round"/>
-</svg>

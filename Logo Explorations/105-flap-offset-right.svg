@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Flap V shifted to the right. Asymmetric, more dynamic but still quiet. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
-  <polyline points="24,16 40,26 52,16" fill="none" stroke="#faf8f4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="16" y1="32" x2="48" y2="32" stroke="#faf8f4" stroke-width="5" stroke-linecap="round"/>
-  <line x1="16" y1="42" x2="42" y2="42" stroke="#faf8f4" stroke-width="5" stroke-linecap="round"/>
-  <line x1="16" y1="50" x2="48" y2="50" stroke="#faf8f4" stroke-width="5" stroke-linecap="round"/>
-</svg>

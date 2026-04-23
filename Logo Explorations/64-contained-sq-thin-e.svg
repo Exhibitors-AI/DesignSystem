@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Rounded square outline (not filled) with a thin lowercase e. Light, airy, editorial. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="#2a9d8f" stroke-width="3"/>
-  <path d="M40,30 L22,30 Q18,30 18,25 Q18,16 32,16 Q46,16 46,30 Q46,46 32,48 Q22,49 18,42" fill="none" stroke="#2a9d8f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

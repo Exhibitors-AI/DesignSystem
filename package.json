@@ -1,0 +1,20 @@
+{
+  "name": "@exhibitors-ai/design-system",
+  "version": "0.1.0",
+  "description": "Exhibitors.ai cross-platform design system — tokens, typography, and component specifications. See design-system.md for the full spec.",
+  "license": "UNLICENSED",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Exhibitors-AI/DesignSystem.git"
+  },
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "tokens.css",
+    "design-system.md",
+    "*.html"
+  ]
+}

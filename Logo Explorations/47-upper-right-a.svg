@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- 45 rotated so the diamond points upper-right. Bars zigzag from lower-left, envelope launches upper-right. More upward energy. -->
-  <path d="
-    M8,52 L22,44
-    L8,38 L22,30
-    L8,24 L22,18
-    L14,6 L54,30 L22,52 L22,44
-  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

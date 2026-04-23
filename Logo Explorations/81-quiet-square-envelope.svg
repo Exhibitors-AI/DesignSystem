@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Square proportions instead of landscape. Feels more like a container than a letter. -->
-  <rect x="10" y="10" width="44" height="44" rx="6" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linejoin="round"/>
-  <polyline points="10,14 32,32 54,14" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

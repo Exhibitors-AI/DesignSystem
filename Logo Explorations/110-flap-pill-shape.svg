@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Pill/stadium container with flap and lines. Wider, modern. -->
-  <rect x="2" y="12" width="60" height="40" rx="20" fill="#2a9d8f"/>
-  <polyline points="14,20 32,30 50,20" fill="none" stroke="#faf8f4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="14" y1="36" x2="42" y2="36" stroke="#faf8f4" stroke-width="4" stroke-linecap="round"/>
-  <line x1="14" y1="44" x2="50" y2="44" stroke="#faf8f4" stroke-width="4" stroke-linecap="round"/>
-</svg>

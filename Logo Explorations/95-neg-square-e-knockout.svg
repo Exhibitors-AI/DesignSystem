@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Rounded square with a bold e completely knocked out. The e is large, touching the edges. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
-  <path d="M48,32 L16,32 Q8,32 8,20 Q8,4 32,4 Q56,4 56,32 Q56,56 32,60 Q14,62 8,44" fill="#faf8f4" stroke="none"/>
-</svg>

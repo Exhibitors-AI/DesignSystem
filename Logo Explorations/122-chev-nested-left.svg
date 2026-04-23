@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Chevron on the left side, lines extend right from it. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
-  <polyline points="20,14 12,32 20,50" fill="none" stroke="#faf8f4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="22" y1="18" x2="50" y2="18" stroke="#faf8f4" stroke-width="4.5" stroke-linecap="round"/>
-  <line x1="18" y1="32" x2="46" y2="32" stroke="#faf8f4" stroke-width="4.5" stroke-linecap="round"/>
-  <line x1="22" y1="46" x2="50" y2="46" stroke="#faf8f4" stroke-width="4.5" stroke-linecap="round"/>
-</svg>

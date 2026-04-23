@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Envelope tilted slightly with a single chevron trailing behind it, like it's been launched. The chevron and envelope share the same stroke language. Suggests speed + email as one gesture. -->
-  <!-- Envelope, slightly shifted right -->
-  <rect x="18" y="16" width="42" height="30" rx="5" ry="5" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linejoin="round"/>
-  <polyline points="18,20 39,36 60,20" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Trailing chevron on the left, connected to the envelope's left edge -->
-  <polyline points="4,24 14,32 4,40" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

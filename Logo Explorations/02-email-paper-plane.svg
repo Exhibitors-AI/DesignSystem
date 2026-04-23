@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Theme: Email + Speed — Paper plane in motion -->
-  <path d="M12,32 L52,12 L36,52 L28,36 Z" fill="#2a9d8f"/>
-  <path d="M28,36 L52,12" stroke="#1e7a6f" stroke-width="2" fill="none"/>
-  <!-- Motion lines -->
-  <line x1="8" y1="28" x2="18" y2="28" stroke="#2a9d8f" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
-  <line x1="6" y1="36" x2="14" y2="36" stroke="#2a9d8f" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
-  <line x1="10" y1="44" x2="16" y2="44" stroke="#2a9d8f" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
-</svg>

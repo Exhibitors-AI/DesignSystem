@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- E as a single continuous path. The spine flows into each arm, arms end in soft chevron points. Rounded joins throughout. -->
-  <path d="
-    M18,8 L46,8 L50,14 L46,20 L24,20
-    L24,28 L42,28 L46,32 L42,36 L24,36
-    L24,44 L46,44 L50,50 L46,56 L18,56
-    L18,8 Z
-  " fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-</svg>

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Theme: Magic + Confidence — Bold E with a four-point sparkle -->
-  <rect x="14" y="10" width="8" height="44" rx="2" fill="#2a9d8f"/>
-  <rect x="14" y="10" width="30" height="8" rx="2" fill="#2a9d8f"/>
-  <rect x="14" y="28" width="24" height="8" rx="2" fill="#2a9d8f"/>
-  <rect x="14" y="46" width="30" height="8" rx="2" fill="#2a9d8f"/>
-  <!-- Sparkle top right -->
-  <path d="M48,8 L50,2 L52,8 L58,10 L52,12 L50,18 L48,12 L42,10 Z" fill="#c2783a"/>
-</svg>

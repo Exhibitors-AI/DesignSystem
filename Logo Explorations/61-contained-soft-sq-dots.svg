@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Rounded square with abstract E formed from three horizontal dots/dashes. Extremely minimal. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
-  <line x1="20" y1="20" x2="44" y2="20" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-  <line x1="20" y1="32" x2="38" y2="32" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-  <line x1="20" y1="44" x2="44" y2="44" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-</svg>

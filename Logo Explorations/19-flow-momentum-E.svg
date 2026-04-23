@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- E where the horizontal arms progressively angle forward, creating a sense of acceleration. Like the arms are being swept back by wind. Single filled shape. -->
-  <path d="
-    M16,8 L16,56
-    L48,56 L46,48 L24,48
-    L24,36 L44,34 L42,28 L24,30
-    L24,16 L48,14 L46,8 Z
-  " fill="#2a9d8f"/>
-</svg>

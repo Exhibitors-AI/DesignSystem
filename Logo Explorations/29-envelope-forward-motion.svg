@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Rounded envelope with a second chevron echoing forward from the flap. Feels like the envelope is sending itself. All same stroke weight and rounding. -->
-  <rect x="6" y="20" width="42" height="30" rx="5" ry="5" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linejoin="round"/>
-  <polyline points="6,24 27,40 48,24" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Forward echo chevron, same weight -->
-  <polyline points="48,24 58,34 48,44" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

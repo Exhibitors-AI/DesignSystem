@@ -1,0 +1,99 @@
+/*
+ * Exhibitors.ai Design System — Design Tokens
+ * Source of truth: design-system.md
+ *
+ * Consume by importing once at the top of your app's root stylesheet:
+ *   @import "@exhibitors-ai/design-system/tokens.css";
+ */
+
+:root {
+  /* ------- Colors: Primary ------- */
+  --primary: #2a9d8f;
+  --primary-hover: #249185;
+  --primary-light: #e0f3f0;
+  --primary-dark: #1e7a6f;
+
+  /* ------- Colors: Classification Accents ------- */
+  --clay: #c2783a;
+  --clay-light: #f5ece0;
+  --sage: #3d9960;
+  --sage-light: #e2f2e6;
+  --slate: #6882a0;
+  --slate-light: #e8edf3;
+
+  /* ------- Colors: Neutrals (text) ------- */
+  --ink: #1a1a1a;
+  --ink-secondary: #444444;
+  --ink-muted: #777777;
+  --ink-subtle: #aaaaaa;
+
+  /* ------- Colors: Backgrounds ------- */
+  --bg-page: #faf8f4;
+  --bg-warm: #f5efe6;
+  --bg-card: #ffffff;
+  --bg-hover: #f7f5f1;
+
+  /* ------- Colors: Borders ------- */
+  --border: #e0dbd2;
+  --border-light: #efece6;
+
+  /* ------- Colors: Navigation ------- */
+  --nav-bg: #1a1a1a;
+  --nav-hover: #2a2a2a;
+  --nav-text: #999999;
+  --nav-text-active: #ffffff;
+  --nav-label: #555555;
+
+  /* ------- Colors: Semantic ------- */
+  --success: #3d9960;
+  --success-light: #e2f2e6;
+  --warning: #c2783a;
+  --warning-light: #f5ece0;
+  --error: #c25050;
+  --error-light: #fde8e8;
+  --info: #6882a0;
+  --info-light: #e8edf3;
+
+  /* ------- Typography ------- */
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ------- Spacing (4px base) ------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+  --space-10: 80px;
+  --space-11: 120px;
+
+  /* ------- Border Radius ------- */
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+
+  /* ------- Elevation / Shadows ------- */
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-2: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 40px rgba(0, 0, 0, 0.06);
+  --shadow-4: 0 20px 60px rgba(0, 0, 0, 0.08);
+
+  /* ------- Transitions ------- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.25s ease;
+  --transition-panel: 0.3s ease;
+
+  /* ------- Layout ------- */
+  --sidebar-width: 220px;
+  --sidebar-width-collapsed: 56px;
+  --content-max-width: 1200px;
+  --touch-target: 44px;
+}

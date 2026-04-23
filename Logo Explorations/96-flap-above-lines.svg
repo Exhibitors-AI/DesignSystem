@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Flap V sits above the three lines, inside the square. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
-  <polyline points="16,14 32,24 48,14" fill="none" stroke="#faf8f4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="16" y1="30" x2="48" y2="30" stroke="#faf8f4" stroke-width="4" stroke-linecap="round"/>
-  <line x1="16" y1="40" x2="42" y2="40" stroke="#faf8f4" stroke-width="4" stroke-linecap="round"/>
-  <line x1="16" y1="50" x2="48" y2="50" stroke="#faf8f4" stroke-width="4" stroke-linecap="round"/>
-</svg>

@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Thin elegant lines with a thin chevron. Editorial feel. -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a9d8f"/>
-  <line x1="16" y1="18" x2="38" y2="18" stroke="#faf8f4" stroke-width="3" stroke-linecap="round"/>
-  <line x1="16" y1="32" x2="34" y2="32" stroke="#faf8f4" stroke-width="3" stroke-linecap="round"/>
-  <line x1="16" y1="46" x2="38" y2="46" stroke="#faf8f4" stroke-width="3" stroke-linecap="round"/>
-  <polyline points="42,20 50,32 42,44" fill="none" stroke="#faf8f4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

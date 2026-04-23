@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Filled envelope. The flap lines and body create an implied e through their arrangement. -->
-  <rect x="6" y="10" width="52" height="44" rx="6" fill="#2a9d8f"/>
-  <polyline points="6,12 32,34 58,12" fill="none" stroke="#faf8f4" stroke-width="4" stroke-linejoin="round"/>
-  <line x1="6" y1="34" x2="22" y2="34" stroke="#faf8f4" stroke-width="4" stroke-linecap="round"/>
-</svg>
