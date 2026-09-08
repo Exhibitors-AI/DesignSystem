@@ -159,7 +159,7 @@ Soft translucent shapes that bleed from header corners and sit behind avatars. K
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--decor-teal` / `--decor-clay` / `--decor-slate` | brand hexes | Fill colors for decorative circles |
+| `--decor-teal` / `--decor-clay` / `--decor-slate` | `#2A9D8F` / `#C2783A` / `#6882A0` | Fill colors for decorative circles |
 | `--decor-opacity-min` → `--decor-opacity-max` | `0.06` → `0.14` | Opacity range for background shapes |
 
 > **Reconciliation (v2.1 review — resolved):** `--primary-dark` was collapsed to `#1a6f64` (the hero-gradient endpoint; white-on-it 6.0:1), replacing the former `#1e7a6f`. `--ink-muted` was warm-darkened to `#6b6459` (5.5:1 on cream) — this both fixes a pre-existing AA miss and adopts the refresh's warmer neutral. `--ink-subtle #aaaaaa` is retained for **placeholder / disabled text only** (WCAG-exempt); never use it for meaningful text.
@@ -660,6 +660,11 @@ Tone: warm and encouraging. "Your first list starts here" not "No data found."
   --bg-group-header: #f2ede4;
   --gradient-header: linear-gradient(165deg, #eaf4f0 0%, #faf8f4 70%);
   --gradient-hero: linear-gradient(150deg, #2a9d8f 0%, #1a6f64 100%);
+  --decor-opacity-min: 0.06;
+  --decor-opacity-max: 0.14;
+  --decor-teal: #2a9d8f;
+  --decor-clay: #c2783a;
+  --decor-slate: #6882a0;
   --radius-input: 10px;
   --radius-button: 12px;
   --radius-tile: 14px;
