@@ -11,7 +11,7 @@
   --primary: #2a9d8f;
   --primary-hover: #249185;
   --primary-light: #e0f3f0;
-  --primary-dark: #1e7a6f;
+  --primary-dark: #1a6f64;
 
   /* ------- Colors: Classification Accents ------- */
   --clay: #c2783a;
@@ -24,7 +24,7 @@
   /* ------- Colors: Neutrals (text) ------- */
   --ink: #1a1a1a;
   --ink-secondary: #444444;
-  --ink-muted: #777777;
+  --ink-muted: #6b6459;
   --ink-subtle: #aaaaaa;
 
   /* ------- Colors: Backgrounds ------- */
@@ -54,6 +54,42 @@
   --info: #6882a0;
   --info-light: #e8edf3;
 
+  /* ===== Balanced Blend expressive layer (added v2.1) ================= */
+
+  /* ------- Colors: Tonal Row Surfaces -------
+     Soft tinted fills for list-row / tonal cards, one step warmer than the
+     *-light chip tints. Keyed to each item's accent. */
+  --teal-row: #e5f1ee;
+  --clay-row: #f6efe4;
+  --sage-row: #e6f1e9;
+  --slate-row: #eaeef4;
+
+  /* ------- Colors: Text-on-Tint (tonal chips & accent text) -------
+     Darker, same-hue text that meets contrast on the *-light / *-row tints.
+     Pair --clay-deep with --clay-light, etc. */
+  --primary-deep: #144a43;
+  --clay-deep: #965021;
+  --sage-deep: #2f6b45;
+  --slate-deep: #4a5e75;
+
+  /* ------- Colors: Surfaces (Balanced Blend) ------- */
+  --bg-field: #efe8dc;        /* search / untinted input fill */
+  --bg-group-header: #f2ede4; /* collapsible group headers */
+
+  /* ------- Gradients (header washes & the mobile detail hero) -------
+     Decoration only — never place body copy directly on the hero. */
+  --gradient-header: linear-gradient(165deg, #eaf4f0 0%, #faf8f4 70%);
+  --gradient-hero: linear-gradient(150deg, #2a9d8f 0%, #1a6f64 100%);
+
+  /* ------- Decoration (soft geometric shapes; keep OFF text) -------
+     Circles/washes bleed from header corners and sit behind avatars at these
+     low opacities. Dense list screens stay undecorated. */
+  --decor-opacity-min: 0.06;
+  --decor-opacity-max: 0.14;
+  --decor-teal: #2a9d8f;
+  --decor-clay: #c2783a;
+  --decor-slate: #6882a0;
+
   /* ------- Typography ------- */
   --font-serif: 'Source Serif 4', Georgia, serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -79,11 +115,28 @@
   --radius-xl: 18px;
   --radius-full: 9999px;
 
+  /* ------- Border Radius: Balanced Blend component set (added v2.1) -------
+     The refresh softens interactive controls and distinguishes entity shapes:
+     list/event count tiles are rounded-SQUARES (--radius-tile), people stay
+     round (--radius-full). Supersede --radius-md for buttons/inputs on
+     refreshed surfaces. */
+  --radius-input: 10px;
+  --radius-button: 12px;
+  --radius-tile: 14px;   /* rounded-square count tiles + tonal cards */
+  --radius-search: 20px;
+  --radius-sheet: 22px;  /* bottom-sheet top corners */
+
   /* ------- Elevation / Shadows ------- */
   --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
   --shadow-2: 0 4px 20px rgba(0, 0, 0, 0.06);
   --shadow-3: 0 10px 40px rgba(0, 0, 0, 0.06);
   --shadow-4: 0 20px 60px rgba(0, 0, 0, 0.08);
+
+  /* ------- Elevation: Balanced Blend component shadows (added v2.1) -------
+     Warmer, slightly deeper lifts for the refreshed mobile surfaces. */
+  --shadow-card: 0 8px 22px rgba(26, 26, 26, 0.1);   /* tonal cards */
+  --shadow-fab: 0 6px 16px rgba(42, 157, 143, 0.4);  /* teal FAB */
+  --shadow-modal: 0 12px 40px rgba(0, 0, 0, 0.3);    /* sheets / alerts */
 
   /* ------- Transitions ------- */
   --transition-fast: 0.15s ease;

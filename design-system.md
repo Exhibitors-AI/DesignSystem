@@ -3,7 +3,17 @@
 > Cross-platform design language for web app, React Native mobile app, and marketing site.
 > Source of truth for all visual and interaction decisions.
 >
-> **Version:** 2.0 | **Updated:** April 2026 | **Jira:** EB-192
+> **Version:** 2.1 | **Updated:** September 2026 | **Jira:** EB-192
+>
+> **v2.1 — Balanced Blend expressive layer.** Adds light branding and "quiet flair"
+> to the functional base: soft geometric decoration in header corners, two-tone
+> serif headlines, tonal row surfaces and chips, a count-tile vs. avatar shape
+> distinction, and gradient header/hero washes. Everything additive — dense screens
+> stay calm. First applied in the mobile app refresh; promoted here for web +
+> marketing parity. The v2.1 accessibility review is complete: `--primary-dark`
+> collapsed to `#1a6f64`, `--ink-muted` warm-darkened to `#6b6459`, `--clay-deep`
+> darkened to clear AA, and selected chips moved to a darker fill — all pairs now
+> meet WCAG AA at their real sizes.
 
 ---
 
@@ -15,11 +25,12 @@
 4. [Spacing](#spacing)
 5. [Border Radius](#border-radius)
 6. [Elevation & Shadows](#elevation--shadows)
-7. [Components](#components)
-8. [Navigation](#navigation)
-9. [Interaction Patterns](#interaction-patterns)
-10. [Platform-Specific Guidelines](#platform-specific-guidelines)
-11. [Implementation](#implementation)
+7. [Decoration & Brand Mark](#decoration--brand-mark-balanced-blend)
+8. [Components](#components)
+9. [Navigation](#navigation)
+10. [Interaction Patterns](#interaction-patterns)
+11. [Platform-Specific Guidelines](#platform-specific-guidelines)
+12. [Implementation](#implementation)
 
 ---
 
@@ -35,6 +46,7 @@ Exhibitors.ai's visual language projects confident calm in the middle of chaos. 
 2. **Intentional color** — Every accent color has a meaning. Teal is the brand. Clay, sage, and slate classify contacts.
 3. **Platform-adaptive** — Same design language, adapted to each platform's native patterns. No forcing web patterns onto mobile.
 4. **Breathing room** — When in doubt, add more space. The editorial style favors openness over density.
+5. **Expressive restraint (Balanced Blend)** — Branding lives at the edges: decoration stays in header corners and behind avatars, never under body copy; the accent shows through two-tone headlines and tonal surfaces rather than heavy chrome. Flair earns its place only where the screen can afford it — dense list and table screens stay essentially undecorated.
 
 ---
 
@@ -47,7 +59,7 @@ Exhibitors.ai's visual language projects confident calm in the middle of chaos. 
 | `--primary` | `#2A9D8F` | Primary brand, buttons, links, active states |
 | `--primary-hover` | `#249185` | Hover state for primary elements |
 | `--primary-light` | `#E0F3F0` | Badges, light backgrounds, focus rings |
-| `--primary-dark` | `#1E7A6F` | Pressed state, dark-on-dark contexts |
+| `--primary-dark` | `#1a6f64` | Pressed state, dark-on-dark contexts |
 
 ### Accents (Classification System)
 
@@ -63,7 +75,7 @@ Exhibitors.ai's visual language projects confident calm in the middle of chaos. 
 |-------|-----|-------|
 | `--ink` | `#1A1A1A` | Primary text, headings |
 | `--ink-secondary` | `#444444` | Body text, descriptions |
-| `--ink-muted` | `#777777` | Metadata, captions, helper text |
+| `--ink-muted` | `#6b6459` | Metadata, captions, helper text |
 | `--ink-subtle` | `#AAAAAA` | Placeholders, disabled text |
 
 ### Backgrounds
@@ -101,6 +113,57 @@ Exhibitors.ai's visual language projects confident calm in the middle of chaos. 
 | `--error` | `#C25050` | `#FDE8E8` | Errors, destructive actions |
 | `--info` | `#6882A0` | `#E8EDF3` | Informational messages |
 
+### Tonal Row Surfaces (Balanced Blend)
+
+Soft tinted fills for list-row and tonal cards — one step warmer than the `*-light` chip tints — keyed to each item's accent color. Use for list rows, the profile identity card, and tonal action surfaces. Chip tints stay the existing `*-light`.
+
+| Token | Hex | Pair with |
+|-------|-----|-----------|
+| `--teal-row` | `#E5F1EE` | teal / brand entities |
+| `--clay-row` | `#F6EFE4` | existing customers |
+| `--sage-row` | `#E6F1E9` | post-engagement |
+| `--slate-row` | `#EAEEF4` | research / neutral |
+
+### Text-on-Tint (Tonal Chips)
+
+Darker, same-hue text for a tonal chip (tinted background + accent text of the same family). Pair each with its `*-light` (chip) or `*-row` (surface) tint.
+
+| Token | Hex | On tint |
+|-------|-----|---------|
+| `--primary-deep` | `#144A43` | `--primary-light` / `--teal-row` |
+| `--clay-deep` | `#965021` | `--clay-light` / `--clay-row` |
+| `--sage-deep` | `#2F6B45` | `--sage-light` / `--sage-row` |
+| `--slate-deep` | `#4A5E75` | `--slate-light` / `--slate-row` |
+
+> **Accessibility (v2.1 review — done):** all four text-on-tint pairs meet WCAG AA at body size on both the `*-light` and `*-row` tints (5.2–8.7:1). `--clay-deep` was darkened from `#a85f27` to `#965021` to clear 4.5:1; the other three passed unchanged.
+
+### Surfaces (Balanced Blend)
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--bg-field` | `#EFE8DC` | Search / untinted input fill (alt. to white + border) |
+| `--bg-group-header` | `#F2EDE4` | Collapsible group headers (e.g. All Contacts) |
+
+### Gradients
+
+Decoration only — **never** place body copy directly on a gradient; titles and controls sit on the calm areas or on an overlapping card.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--gradient-header` | `linear-gradient(165deg, #EAF4F0 0%, #FAF8F4 70%)` | Primary-header wash (login, My Lists, contact list) |
+| `--gradient-hero` | `linear-gradient(150deg, #2A9D8F 0%, #1A6F64 100%)` | Mobile contact-detail hero (with white/clay decoration circles) |
+
+### Decoration
+
+Soft translucent shapes that bleed from header corners and sit behind avatars. Kept at low opacity and **off the text**.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--decor-teal` / `--decor-clay` / `--decor-slate` | `#2A9D8F` / `#C2783A` / `#6882A0` | Fill colors for decorative circles |
+| `--decor-opacity-min` → `--decor-opacity-max` | `0.06` → `0.14` | Opacity range for background shapes |
+
+> **Reconciliation (v2.1 review — resolved):** `--primary-dark` was collapsed to `#1a6f64` (the hero-gradient endpoint; white-on-it 6.0:1), replacing the former `#1e7a6f`. `--ink-muted` was warm-darkened to `#6b6459` (5.5:1 on cream) — this both fixes a pre-existing AA miss and adopts the refresh's warmer neutral. `--ink-subtle #aaaaaa` is retained for **placeholder / disabled text only** (WCAG-exempt); never use it for meaningful text.
+
 ---
 
 ## Typography
@@ -132,6 +195,19 @@ Exhibitors.ai's visual language projects confident calm in the middle of chaos. 
 - **Serif (Source Serif 4):** Headings, display text, contact/company names, pull quotes, metric values, brand wordmark. Conveys editorial authority.
 - **Sans (Inter):** Body text, form labels, button text, nav items, table cells, badges, metadata. Conveys functional clarity.
 - **Rule of thumb:** If the text establishes hierarchy or identity, use serif. If the text is actionable or informational, use sans.
+
+### Serif-only titling (Balanced Blend — hard rule)
+
+Source Serif 4 is reserved for **screen titles, headlines, display text, and identity** (contact/company names, brand wordmark). Everything else — body, labels, list-row titles, buttons, chips, metadata, and even *card* section headers ("Details", "Classification") — is Inter, regardless of size. A small heading inside a card is titling-adjacent but still sans. When the webfont fails to load, sans falls back to the system stack so body text never degrades to serif.
+
+### Two-Tone Headlines (Balanced Blend)
+
+Serif headlines carry one accent word. The key word — usually the last — is set in `--primary` (teal); the rest stays `--ink`. This is the lightest-touch way the brand color enters a screen.
+
+- Examples: My **Lists** · Verify it's **you** · Generation **profile** · Your first **contacts** start here
+- One accent word per headline; never color the whole line.
+- Implementation: wrap the accent word in its own inline span/`<Text>` with `color: var(--primary)`.
+- **Contrast:** `--primary` on cream is AA for **large text only** (3.1:1) — two-tone accents belong on headlines (≥18px). Never set small text in `--primary`; use `--primary-deep` where teal text must be small.
 
 ---
 
@@ -181,6 +257,20 @@ Base unit: **4px**
 | `--radius-xl` | 18px | Marketing sections, hero visual containers |
 | `--radius-full` | 9999px | Avatars, pill buttons, toggle switches |
 
+### Refreshed component radii (Balanced Blend)
+
+The refresh softens interactive controls a step beyond the base scale. Use these on refreshed surfaces; they supersede `--radius-md` for buttons and inputs there (`--radius-md` still applies to nav items, tooltips, and web-dense cards).
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--radius-input` | 10px | Text inputs, selects, textareas |
+| `--radius-button` | 12px | Buttons |
+| `--radius-tile` | 14px | Count tiles (list/event entities) + tonal cards |
+| `--radius-search` | 20px | Search fields |
+| `--radius-sheet` | 22px | Bottom-sheet top corners |
+
+**Shape distinguishes entities (hard rule):** list/event entities use **rounded-square** count tiles (`--radius-tile`, 14px); people/contacts use **round** avatars (`--radius-full`). Never round a count tile to a circle or square off an avatar — the shape is how the two read apart at a glance.
+
 ---
 
 ## Elevation & Shadows
@@ -193,6 +283,31 @@ Base unit: **4px**
 | 4 | `0 20px 60px rgba(0,0,0,0.08)` | Hero visuals, modals |
 
 **Guidance:** The editorial style relies more on borders and spacing than shadow depth. Use sparingly.
+
+### Component shadows (Balanced Blend)
+
+Warmer, slightly deeper lifts for the refreshed mobile surfaces.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--shadow-card` | `0 8px 22px rgba(26,26,26,0.1)` | Tonal cards, overlapping detail card |
+| `--shadow-fab` | `0 6px 16px rgba(42,157,143,0.4)` | Teal capture FAB |
+| `--shadow-modal` | `0 12px 40px rgba(0,0,0,0.3)` | Bottom sheets, center alerts |
+
+---
+
+## Decoration & Brand Mark (Balanced Blend)
+
+The expressive layer. All of it is **background** — it must never sit under or reduce the legibility of text.
+
+### Geometric decoration
+- **Circles:** absolutely positioned, `border-radius: 50%`, filled `--decor-teal` / `--decor-clay` / `--decor-slate` at opacity `0.06–0.14`, bleeding off the top corners of headers and behind avatars.
+- **Header wash:** `--gradient-header` (`165deg`, teal-tinted → cream) on primary headers.
+- **Contact-detail hero (mobile):** `--gradient-hero` (`150deg`, teal → deep teal) with white circles at `.07–.1` and one clay circle at `~.22`; the round avatar breaches the hero's lower edge with a 4px white ring.
+- **Restraint:** dense list/table screens carry no decoration; a single header wash at most.
+
+### Hinted brand mark
+A placeholder mark until a real logo exists: a small teal **quarter-circle** (16–22px square, `border-radius: 0 0 0 N`) with a 5–7px **clay dot** at its inner/top corner. Appears on primary headers beside an uppercase eyebrow. CSS-drawn; swap for a real logo mark when designed.
 
 ---
 
@@ -272,6 +387,37 @@ Border-radius: 16px. Padding: 24px. Border: 1px `--border-light`.
 | Error | `--error-light` | `--error` |
 
 Style: 10px font, 600 weight, uppercase, 0.06em letter-spacing, 3px radius, 3px 8px padding.
+
+### Tonal Chips (Balanced Blend)
+
+The refreshed, larger classification/status/priority chip: a tinted background with darker same-hue text (the `*-deep` on `*-light` pairing), pill-shaped.
+
+| Variant | Background | Text |
+|---------|-----------|------|
+| Teal / new lead | `--primary-light` | `--primary-deep` |
+| Clay / existing | `--clay-light` | `--clay-deep` |
+| Sage / done | `--sage-light` | `--sage-deep` |
+| Slate / research | `--slate-light` | `--slate-deep` |
+
+- **Selected (single-select groups):** fill with the accent's *deep* shade (`--*-deep`; teal uses `--primary-dark`) + white text — this clears AA at 6.0–6.7:1, whereas white on the mid-tone accent (`--clay`/`--sage`/`--slate`/`--primary`) does not. **Unselected:** tonal (tint bg + `*-deep` text).
+- Detail-view chips: 12px / 600. List-row status chips: 10px / 700 uppercase.
+- Radius `--radius-full`. All tonal pairs and the deep-fill selected state meet WCAG AA (verified in the v2.1 review).
+
+### Tonal List Row (Balanced Blend)
+
+A list/event row rendered as a tonal card: `--radius-tile` (14px), background `--*-row` keyed to the item's accent. Contains a **rounded-square count tile** (`--radius-tile`) with the contact count, the list name (sans 15/600), a date range (sans 12, muted), and a chevron. Reserved for browsable entity lists (My Lists); dense contact rows stay flat on paper.
+
+### Count Tile vs. Avatar
+
+The shape distinction, as components:
+- **Count tile** — rounded-square (`--radius-tile`), tinted accent background, holds a number (a list's contact count). Represents a *list/event*.
+- **Avatar** — round (`--radius-full`), accent-tinted with initials (no raster images). Represents a *person*.
+
+Keep these visually distinct everywhere they co-occur.
+
+### Gradient Hero (mobile — contact detail)
+
+A full-bleed `--gradient-hero` header holding the status bar + back control, with decorative white/clay circles. A white card overlaps upward (≈ −56px) so the round avatar breaches the hero edge (4px white ring). The serif name and role·company sit on the card, not the gradient. Below: "Details" and "Classification" cards. This is the boldest expressive moment in the system — used on exactly one screen.
 
 ### Tables (Web Only)
 
@@ -477,7 +623,7 @@ Tone: warm and encouraging. "Your first list starts here" not "No data found."
   --primary: #2a9d8f;
   --primary-hover: #249185;
   --primary-light: #e0f3f0;
-  --primary-dark: #1e7a6f;
+  --primary-dark: #1a6f64;
   --clay: #c2783a;
   --clay-light: #f5ece0;
   --sage: #3d9960;
@@ -486,7 +632,7 @@ Tone: warm and encouraging. "Your first list starts here" not "No data found."
   --slate-light: #e8edf3;
   --ink: #1a1a1a;
   --ink-secondary: #444444;
-  --ink-muted: #777777;
+  --ink-muted: #6b6459;
   --ink-subtle: #aaaaaa;
   --bg-page: #faf8f4;
   --bg-warm: #f5efe6;
@@ -500,6 +646,33 @@ Tone: warm and encouraging. "Your first list starts here" not "No data found."
   --warning: #c2783a;
   --error: #c25050;
   --info: #6882a0;
+
+  /* Balanced Blend (v2.1) */
+  --teal-row: #e5f1ee;
+  --clay-row: #f6efe4;
+  --sage-row: #e6f1e9;
+  --slate-row: #eaeef4;
+  --primary-deep: #144a43;
+  --clay-deep: #965021;
+  --sage-deep: #2f6b45;
+  --slate-deep: #4a5e75;
+  --bg-field: #efe8dc;
+  --bg-group-header: #f2ede4;
+  --gradient-header: linear-gradient(165deg, #eaf4f0 0%, #faf8f4 70%);
+  --gradient-hero: linear-gradient(150deg, #2a9d8f 0%, #1a6f64 100%);
+  --decor-opacity-min: 0.06;
+  --decor-opacity-max: 0.14;
+  --decor-teal: #2a9d8f;
+  --decor-clay: #c2783a;
+  --decor-slate: #6882a0;
+  --radius-input: 10px;
+  --radius-button: 12px;
+  --radius-tile: 14px;
+  --radius-search: 20px;
+  --radius-sheet: 22px;
+  --shadow-card: 0 8px 22px rgba(26,26,26,0.1);
+  --shadow-fab: 0 6px 16px rgba(42,157,143,0.4);
+  --shadow-modal: 0 12px 40px rgba(0,0,0,0.3);
 
   /* Typography */
   --font-serif: 'Source Serif 4', Georgia, serif;
@@ -552,6 +725,7 @@ export const theme = {
     primary: '#2a9d8f',
     primaryHover: '#249185',
     primaryLight: '#e0f3f0',
+    primaryDark: '#1a6f64',
     clay: '#c2783a',
     clayLight: '#f5ece0',
     sage: '#3d9960',
@@ -560,7 +734,7 @@ export const theme = {
     slateLight: '#e8edf3',
     ink: '#1a1a1a',
     inkSecondary: '#444444',
-    inkMuted: '#777777',
+    inkMuted: '#6b6459',
     inkSubtle: '#aaaaaa',
     bgPage: '#faf8f4',
     bgWarm: '#f5efe6',
@@ -572,7 +746,25 @@ export const theme = {
     warning: '#c2783a',
     error: '#c25050',
     info: '#6882a0',
+    // Balanced Blend (v2.1)
+    tealRow: '#e5f1ee',
+    clayRow: '#f6efe4',
+    sageRow: '#e6f1e9',
+    slateRow: '#eaeef4',
+    primaryDeep: '#144a43',
+    clayDeep: '#965021',
+    sageDeep: '#2f6b45',
+    slateDeep: '#4a5e75',
+    bgField: '#efe8dc',
+    bgGroupHeader: '#f2ede4',
   },
+  // Balanced Blend gradients — consume with expo-linear-gradient / react-native-linear-gradient.
+  // Each is [angleDeg, stops]; map to the gradient component's colors/locations/start-end.
+  gradients: {
+    header: { angle: 165, colors: ['#eaf4f0', '#faf8f4'], locations: [0, 0.7] },
+    hero: { angle: 150, colors: ['#2a9d8f', '#1a6f64'], locations: [0, 1] },
+  },
+  decor: { opacityMin: 0.06, opacityMax: 0.14, teal: '#2a9d8f', clay: '#c2783a', slate: '#6882a0' },
   fonts: {
     serif: 'SourceSerif4',
     sans: 'Inter',
@@ -584,12 +776,18 @@ export const theme = {
   },
   radius: {
     xs: 3, sm: 4, md: 8, lg: 16, xl: 18, full: 9999,
+    // Balanced Blend component radii
+    input: 10, button: 12, tile: 14, search: 20, sheet: 22,
   },
   shadows: {
     sm: { shadowOffset: { width: 0, height: 1 }, shadowRadius: 3, shadowOpacity: 0.04, elevation: 1 },
     md: { shadowOffset: { width: 0, height: 4 }, shadowRadius: 20, shadowOpacity: 0.06, elevation: 3 },
     lg: { shadowOffset: { width: 0, height: 10 }, shadowRadius: 40, shadowOpacity: 0.06, elevation: 6 },
     xl: { shadowOffset: { width: 0, height: 20 }, shadowRadius: 60, shadowOpacity: 0.08, elevation: 10 },
+    // Balanced Blend component lifts
+    card: { shadowColor: '#1a1a1a', shadowOffset: { width: 0, height: 8 }, shadowRadius: 22, shadowOpacity: 0.1, elevation: 6 },
+    fab: { shadowColor: '#2a9d8f', shadowOffset: { width: 0, height: 6 }, shadowRadius: 16, shadowOpacity: 0.4, elevation: 8 },
+    modal: { shadowColor: '#000000', shadowOffset: { width: 0, height: 12 }, shadowRadius: 40, shadowOpacity: 0.3, elevation: 12 },
   },
   touchTarget: 44,
 } as const;
@@ -605,3 +803,6 @@ Page comps applying this system:
 - `dashboard-v2.html` — Dashboard with bento grid, sidebar, metric cards
 - `email-cards-v2.html` — Email cards with left-accent stripe pattern
 - `landing-v2.html` — Marketing landing page with editorial hero
+- `mobile-screens-v2.html` — Mobile screen comps
+
+**v2.1 (Balanced Blend):** the token/spec layer above is authoritative and is what web (`tokens.css`) and mobile (theme object) consume today. The gallery and page comps above still render the v2.0 look — refreshing them to show tonal rows, two-tone headlines, the gradient hero, and the count-tile/avatar distinction is a follow-up. Until then, the mobile app's `Exhibitors — Balanced Blend` design reference is the visual source for the expressive layer.
