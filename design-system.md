@@ -151,7 +151,8 @@ Decoration only — **never** place body copy directly on a gradient; titles and
 | Token | Value | Usage |
 |-------|-------|-------|
 | `--gradient-header` | `linear-gradient(165deg, #EAF4F0 0%, #FAF8F4 70%)` | Primary-header wash (login, My Lists, contact list) |
-| `--gradient-hero` | `linear-gradient(150deg, #2A9D8F 0%, #1A6F64 100%)` | Mobile contact-detail hero (with white/clay decoration circles) |
+| `--gradient-hero` | `linear-gradient(150deg, #2A9D8F 0%, #1A6F64 100%)` | Mobile contact-detail hero **and web modal headers** (with white/clay decoration circles) |
+| `--wash-content` | two-stop `radial-gradient` — faint teal glow top-right, warm paper bottom-left | Web content-area wash, sits behind the page circles backdrop and behind opaque cards (see § Decoration & Brand Mark → Web page backdrop) |
 
 ### Decoration
 
@@ -160,7 +161,8 @@ Soft translucent shapes that bleed from header corners and sit behind avatars. K
 | Token | Value | Usage |
 |-------|-------|-------|
 | `--decor-teal` / `--decor-clay` / `--decor-slate` | `#2A9D8F` / `#C2783A` / `#6882A0` | Fill colors for decorative circles |
-| `--decor-opacity-min` → `--decor-opacity-max` | `0.06` → `0.14` | Opacity range for background shapes |
+| `--decor-opacity-min` → `--decor-opacity-max` | `0.06` → `0.14` | Opacity range for header-corner shapes (mobile + web headers) |
+| _web page backdrop_ | `~0.03` → `0.05` | Fainter opacity for the page-wide circles layer behind the whole web content area (see § Decoration & Brand Mark → Web page backdrop) |
 
 > **Reconciliation (v2.1 review — resolved):** `--primary-dark` was collapsed to `#1a6f64` (the hero-gradient endpoint; white-on-it 6.0:1), replacing the former `#1e7a6f`. `--ink-muted` was warm-darkened to `#6b6459` (5.5:1 on cream) — this both fixes a pre-existing AA miss and adopts the refresh's warmer neutral. `--ink-subtle #aaaaaa` is retained for **placeholder / disabled text only** (WCAG-exempt); never use it for meaningful text.
 
@@ -306,6 +308,14 @@ The expressive layer. All of it is **background** — it must never sit under or
 - **Contact-detail hero (mobile):** `--gradient-hero` (`150deg`, teal → deep teal) with white circles at `.07–.1` and one clay circle at `~.22`; the round avatar breaches the hero's lower edge with a 4px white ring.
 - **Restraint:** dense list/table screens carry no decoration; a single header wash at most.
 
+### Web page backdrop (Balanced Blend — web)
+A page-wide extension of the header-corner circles: a faint composition of **full and partial circles** (quarter-circles, rings, bleeding circles) sits far behind the entire content area and shows through the gaps between opaque cards.
+- **Circles only** — no triangles, no dot grids.
+- Brand colors (`--decor-teal` / `--decor-clay` / `--decor-slate`) at **~0.03–0.05 opacity** — fainter than the header-corner range (`0.06–0.14`), because the layer spans the whole page.
+- Shapes **bleed off all four corners**; the layer stays **behind opaque cards and off all text**.
+- Pair it with **`--wash-content`** — a two-stop radial wash (faint teal glow top-right, warm-paper bottom-left) that sits behind the circles on the content area.
+- The mobile "header-corner circles" guidance above is unchanged; this is the web-only page layer.
+
 ### Hinted brand mark
 A placeholder mark until a real logo exists: a small teal **quarter-circle** (16–22px square, `border-radius: 0 0 0 N`) with a 5–7px **clay dot** at its inner/top corner. Appears on primary headers beside an uppercase eyebrow. CSS-drawn; swap for a real logo mark when designed.
 
@@ -398,10 +408,12 @@ The refreshed, larger classification/status/priority chip: a tinted background w
 | Clay / existing | `--clay-light` | `--clay-deep` |
 | Sage / done | `--sage-light` | `--sage-deep` |
 | Slate / research | `--slate-light` | `--slate-deep` |
+| Cold / blue | `--cold-light` | `--cold-deep` |
 
 - **Selected (single-select groups):** fill with the accent's *deep* shade (`--*-deep`; teal uses `--primary-dark`) + white text — this clears AA at 6.0–6.7:1, whereas white on the mid-tone accent (`--clay`/`--sage`/`--slate`/`--primary`) does not. **Unselected:** tonal (tint bg + `*-deep` text).
 - Detail-view chips: 12px / 600. List-row status chips: 10px / 700 uppercase.
 - Radius `--radius-full`. All tonal pairs and the deep-fill selected state meet WCAG AA (verified in the v2.1 review).
+- **Lead-category status chips (web tables):** tint bg + `*-deep` text + a small colored **status dot** in the accent — Current → `--sage`, Warm → `--clay`, Hot → `--error`, Cold → `--cold` (the blue category; use the `--cold` family, not `--slate`/`--info`).
 
 ### Tonal List Row (Balanced Blend)
 
@@ -417,7 +429,16 @@ Keep these visually distinct everywhere they co-occur.
 
 ### Gradient Hero (mobile — contact detail)
 
-A full-bleed `--gradient-hero` header holding the status bar + back control, with decorative white/clay circles. A white card overlaps upward (≈ −56px) so the round avatar breaches the hero edge (4px white ring). The serif name and role·company sit on the card, not the gradient. Below: "Details" and "Classification" cards. This is the boldest expressive moment in the system — used on exactly one screen.
+A full-bleed `--gradient-hero` header holding the status bar + back control, with decorative white/clay circles. A white card overlaps upward (≈ −56px) so the round avatar breaches the hero edge (4px white ring). The serif name and role·company sit on the card, not the gradient. Below: "Details" and "Classification" cards. This is the boldest expressive moment in the system. On **mobile** it appears on exactly one screen (contact detail); on **web**, the same `--gradient-hero` band is reused for **modal headers** — see *Modal header (web)* below.
+
+### Modal header (web)
+
+Every web modal header uses a `--gradient-hero` band (the teal → deep-teal used by the mobile hero), carrying:
+- soft **white decoration circles** at `.06–.1` plus one **clay circle** at `~.28`, bleeding off the corners;
+- a left-aligned **white serif title** (`--font-serif`);
+- a **white ✕** close control (top-right); and, where the modal paginates (e.g. Edit Email), white `‹ 1 / 2 ›` controls.
+
+Body content sits on `--bg-card` / `--bg-page` below the band — never on the gradient. Applies to Create Event, Add Lead, Edit Email, Classification & Email Rules, and the Manage Profiles / Greetings / CTAs modals.
 
 ### Tables (Web Only)
 
@@ -446,11 +467,15 @@ Shadow: Level 3. Border-radius: 8px. Auto-dismiss: 4 seconds. Position: bottom-r
 - **≥1280px (xl):** Expanded — 220px wide, labels and section headers visible
 - **<1280px:** Collapsed — 56px wide, icon-only, tooltips on hover, no section labels
 
+**No top app bar.** The sidebar is the only chrome. Content runs full-height directly under the sidebar — there is no top bar, wordmark strip, or status strip above the content area (this removes the former 42px white top bar).
+
+**Beta / status placement.** Product-status flags (e.g. `BETA`) live in the sidebar brand block — next to the wordmark when expanded, and as a small chip beneath the mark on the collapsed rail. Never in a top bar.
+
 #### Expanded (≥1280px)
 
 ```
 ┌─────────────────────┐
-│  [E] Exhibitors      │  ← Teal icon, serif brand name
+│  [E] Exhibitors BETA │  ← mark + serif wordmark + BETA pill (beta lives here — no top bar)
 │─────────────────────│
 │  MAIN                │  ← 10px uppercase label
 │  ● Dashboard         │  ← Active: white text, #2a2a2a bg
@@ -471,7 +496,7 @@ Shadow: Level 3. Border-radius: 8px. Auto-dismiss: 4 seconds. Position: bottom-r
 
 ```
 ┌──────┐
-│ [E]  │  ← Teal icon only, no brand text
+│ [E]  │  ← mark + small BETA chip beneath (no top bar)
 │──────│
 │  ◇   │  ← Icon only, tooltip on hover shows label
 │  ●   │  ← Active: white icon, #2a2a2a bg
@@ -590,6 +615,8 @@ Tone: warm and encouraging. "Your first list starts here" not "No data found."
 - Update all heading sizes to match the type scale (current are too small)
 - Add shadow levels to replace generic `shadow-sm`
 - Retrofit existing components (Button, SearchInput, tables, modals)
+- **Density profile (data screens).** This information-dense app runs tighter than the base v2.0 comps: content padding ~18–26px, section gaps ~12–16px, card padding ~13–15px, table rows ~9–12px vertical. Buttons are smaller and **icon-led** — 32px primary/secondary, 28px in dense toolbars (down from the 40px default), with 14–15px Lucide glyphs. This is a **local application profile**, not a change to the base type/space scale.
+- **Page shell.** No top app bar (the sidebar is the only chrome); the content area carries the `--wash-content` radial wash + the circles page backdrop (see § Decoration & Brand Mark → Web page backdrop); cards/grids/tables cap at `--content-max-width` (wide tables scroll horizontally within their panel).
 
 ### Mobile App (React Native)
 

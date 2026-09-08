@@ -20,6 +20,8 @@
   --sage-light: #e2f2e6;
   --slate: #6882a0;
   --slate-light: #e8edf3;
+  --cold: #4a72b0;            /* lead-category "Cold" — a truer blue, distinct from --slate/--info */
+  --cold-light: #e4ecf6;
 
   /* ------- Colors: Neutrals (text) ------- */
   --ink: #1a1a1a;
@@ -71,6 +73,7 @@
   --clay-deep: #965021;
   --sage-deep: #2f6b45;
   --slate-deep: #4a5e75;
+  --cold-deep: #3f5169;   /* text-on-tint for the Cold (blue) category */
 
   /* ------- Colors: Surfaces (Balanced Blend) ------- */
   --bg-field: #efe8dc;        /* search / untinted input fill */
@@ -80,6 +83,12 @@
      Decoration only — never place body copy directly on the hero. */
   --gradient-header: linear-gradient(165deg, #eaf4f0 0%, #faf8f4 70%);
   --gradient-hero: linear-gradient(150deg, #2a9d8f 0%, #1a6f64 100%);
+
+  /* Web content-area wash (added v2.2): faint teal glow top-right, warm paper
+     bottom-left. Sits behind the page circles backdrop and behind opaque cards,
+     off all text. Decoration only. */
+  --wash-content: radial-gradient(115% 80% at 82% 0%, #eef4f1 0%, rgba(238, 244, 241, 0) 55%),
+                  radial-gradient(100% 90% at 0% 100%, #f6efe6 0%, rgba(246, 239, 230, 0) 52%);
 
   /* ------- Decoration (soft geometric shapes; keep OFF text) -------
      Circles/washes bleed from header corners and sit behind avatars at these
