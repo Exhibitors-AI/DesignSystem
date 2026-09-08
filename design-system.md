@@ -408,10 +408,12 @@ The refreshed, larger classification/status/priority chip: a tinted background w
 | Clay / existing | `--clay-light` | `--clay-deep` |
 | Sage / done | `--sage-light` | `--sage-deep` |
 | Slate / research | `--slate-light` | `--slate-deep` |
+| Cold / blue | `--cold-light` | `--cold-deep` |
 
 - **Selected (single-select groups):** fill with the accent's *deep* shade (`--*-deep`; teal uses `--primary-dark`) + white text — this clears AA at 6.0–6.7:1, whereas white on the mid-tone accent (`--clay`/`--sage`/`--slate`/`--primary`) does not. **Unselected:** tonal (tint bg + `*-deep` text).
 - Detail-view chips: 12px / 600. List-row status chips: 10px / 700 uppercase.
 - Radius `--radius-full`. All tonal pairs and the deep-fill selected state meet WCAG AA (verified in the v2.1 review).
+- **Lead-category status chips (web tables):** tint bg + `*-deep` text + a small colored **status dot** in the accent — Current → `--sage`, Warm → `--clay`, Hot → `--error`, Cold → `--cold` (the blue category; use the `--cold` family, not `--slate`/`--info`).
 
 ### Tonal List Row (Balanced Blend)
 

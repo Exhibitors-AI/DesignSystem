@@ -20,6 +20,8 @@
   --sage-light: #e2f2e6;
   --slate: #6882a0;
   --slate-light: #e8edf3;
+  --cold: #4a72b0;            /* lead-category "Cold" — a truer blue, distinct from --slate/--info */
+  --cold-light: #e4ecf6;
 
   /* ------- Colors: Neutrals (text) ------- */
   --ink: #1a1a1a;
@@ -71,6 +73,7 @@
   --clay-deep: #965021;
   --sage-deep: #2f6b45;
   --slate-deep: #4a5e75;
+  --cold-deep: #3f5169;   /* text-on-tint for the Cold (blue) category */
 
   /* ------- Colors: Surfaces (Balanced Blend) ------- */
   --bg-field: #efe8dc;        /* search / untinted input fill */
