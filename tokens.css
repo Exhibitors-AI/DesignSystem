@@ -81,6 +81,12 @@
   --gradient-header: linear-gradient(165deg, #eaf4f0 0%, #faf8f4 70%);
   --gradient-hero: linear-gradient(150deg, #2a9d8f 0%, #1a6f64 100%);
 
+  /* Web content-area wash (added v2.2): faint teal glow top-right, warm paper
+     bottom-left. Sits behind the page circles backdrop and behind opaque cards,
+     off all text. Decoration only. */
+  --wash-content: radial-gradient(115% 80% at 82% 0%, #eef4f1 0%, rgba(238, 244, 241, 0) 55%),
+                  radial-gradient(100% 90% at 0% 100%, #f6efe6 0%, rgba(246, 239, 230, 0) 52%);
+
   /* ------- Decoration (soft geometric shapes; keep OFF text) -------
      Circles/washes bleed from header corners and sit behind avatars at these
      low opacities. Dense list screens stay undecorated. */
