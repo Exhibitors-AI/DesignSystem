@@ -10,8 +10,10 @@
 > serif headlines, tonal row surfaces and chips, a count-tile vs. avatar shape
 > distinction, and gradient header/hero washes. Everything additive — dense screens
 > stay calm. First applied in the mobile app refresh; promoted here for web +
-> marketing parity. Two value reconciliations (`--primary-dark` shade, muted-text
-> warming) and the text-on-tint contrast set are pending an accessibility review.
+> marketing parity. The v2.1 accessibility review is complete: `--primary-dark`
+> collapsed to `#1a6f64`, `--ink-muted` warm-darkened to `#6b6459`, `--clay-deep`
+> darkened to clear AA, and selected chips moved to a darker fill — all pairs now
+> meet WCAG AA at their real sizes.
 
 ---
 
@@ -57,7 +59,7 @@ Exhibitors.ai's visual language projects confident calm in the middle of chaos. 
 | `--primary` | `#2A9D8F` | Primary brand, buttons, links, active states |
 | `--primary-hover` | `#249185` | Hover state for primary elements |
 | `--primary-light` | `#E0F3F0` | Badges, light backgrounds, focus rings |
-| `--primary-dark` | `#1E7A6F` | Pressed state, dark-on-dark contexts |
+| `--primary-dark` | `#1a6f64` | Pressed state, dark-on-dark contexts |
 
 ### Accents (Classification System)
 
@@ -73,7 +75,7 @@ Exhibitors.ai's visual language projects confident calm in the middle of chaos. 
 |-------|-----|-------|
 | `--ink` | `#1A1A1A` | Primary text, headings |
 | `--ink-secondary` | `#444444` | Body text, descriptions |
-| `--ink-muted` | `#777777` | Metadata, captions, helper text |
+| `--ink-muted` | `#6b6459` | Metadata, captions, helper text |
 | `--ink-subtle` | `#AAAAAA` | Placeholders, disabled text |
 
 ### Backgrounds
@@ -129,11 +131,11 @@ Darker, same-hue text for a tonal chip (tinted background + accent text of the s
 | Token | Hex | On tint |
 |-------|-----|---------|
 | `--primary-deep` | `#144A43` | `--primary-light` / `--teal-row` |
-| `--clay-deep` | `#A85F27` | `--clay-light` / `--clay-row` |
+| `--clay-deep` | `#965021` | `--clay-light` / `--clay-row` |
 | `--sage-deep` | `#2F6B45` | `--sage-light` / `--sage-row` |
 | `--slate-deep` | `#4A5E75` | `--slate-light` / `--slate-row` |
 
-> **Pending accessibility review:** these text-on-tint pairings are the primary thing the v2.1 a11y pass must verify against WCAG AA (4.5:1 for body-size chip text). Adjust the `*-deep` values here — at the token level — if any pair falls short.
+> **Accessibility (v2.1 review — done):** all four text-on-tint pairs meet WCAG AA at body size on both the `*-light` and `*-row` tints (5.2–8.7:1). `--clay-deep` was darkened from `#a85f27` to `#965021` to clear 4.5:1; the other three passed unchanged.
 
 ### Surfaces (Balanced Blend)
 
@@ -160,7 +162,7 @@ Soft translucent shapes that bleed from header corners and sit behind avatars. K
 | `--decor-teal` / `--decor-clay` / `--decor-slate` | brand hexes | Fill colors for decorative circles |
 | `--decor-opacity-min` → `--decor-opacity-max` | `0.06` → `0.14` | Opacity range for background shapes |
 
-> **Open reconciliation (for the a11y pass):** the mobile refresh proposed a slightly deeper primary (`#1A6F64`, used as the hero endpoint) and a warmer muted text (`#7A736A`) than the shipped `--primary-dark #1E7A6F` / `--ink-muted #777777`. These are intentionally **not** adopted as token changes yet — decide during the accessibility review whether to collapse `--primary-dark` to one value and warm the neutrals system-wide.
+> **Reconciliation (v2.1 review — resolved):** `--primary-dark` was collapsed to `#1a6f64` (the hero-gradient endpoint; white-on-it 6.0:1), replacing the former `#1e7a6f`. `--ink-muted` was warm-darkened to `#6b6459` (5.5:1 on cream) — this both fixes a pre-existing AA miss and adopts the refresh's warmer neutral. `--ink-subtle #aaaaaa` is retained for **placeholder / disabled text only** (WCAG-exempt); never use it for meaningful text.
 
 ---
 
@@ -205,6 +207,7 @@ Serif headlines carry one accent word. The key word — usually the last — is 
 - Examples: My **Lists** · Verify it's **you** · Generation **profile** · Your first **contacts** start here
 - One accent word per headline; never color the whole line.
 - Implementation: wrap the accent word in its own inline span/`<Text>` with `color: var(--primary)`.
+- **Contrast:** `--primary` on cream is AA for **large text only** (3.1:1) — two-tone accents belong on headlines (≥18px). Never set small text in `--primary`; use `--primary-deep` where teal text must be small.
 
 ---
 
@@ -396,9 +399,9 @@ The refreshed, larger classification/status/priority chip: a tinted background w
 | Sage / done | `--sage-light` | `--sage-deep` |
 | Slate / research | `--slate-light` | `--slate-deep` |
 
-- **Selected (single-select groups):** solid accent fill + white text. **Unselected:** tonal (tint bg + `*-deep` text).
+- **Selected (single-select groups):** fill with the accent's *deep* shade (`--*-deep`; teal uses `--primary-dark`) + white text — this clears AA at 6.0–6.7:1, whereas white on the mid-tone accent (`--clay`/`--sage`/`--slate`/`--primary`) does not. **Unselected:** tonal (tint bg + `*-deep` text).
 - Detail-view chips: 12px / 600. List-row status chips: 10px / 700 uppercase.
-- Radius `--radius-full`. Contrast of every tonal pair is the focus of the v2.1 accessibility review.
+- Radius `--radius-full`. All tonal pairs and the deep-fill selected state meet WCAG AA (verified in the v2.1 review).
 
 ### Tonal List Row (Balanced Blend)
 
@@ -620,7 +623,7 @@ Tone: warm and encouraging. "Your first list starts here" not "No data found."
   --primary: #2a9d8f;
   --primary-hover: #249185;
   --primary-light: #e0f3f0;
-  --primary-dark: #1e7a6f;
+  --primary-dark: #1a6f64;
   --clay: #c2783a;
   --clay-light: #f5ece0;
   --sage: #3d9960;
@@ -629,7 +632,7 @@ Tone: warm and encouraging. "Your first list starts here" not "No data found."
   --slate-light: #e8edf3;
   --ink: #1a1a1a;
   --ink-secondary: #444444;
-  --ink-muted: #777777;
+  --ink-muted: #6b6459;
   --ink-subtle: #aaaaaa;
   --bg-page: #faf8f4;
   --bg-warm: #f5efe6;
@@ -650,7 +653,7 @@ Tone: warm and encouraging. "Your first list starts here" not "No data found."
   --sage-row: #e6f1e9;
   --slate-row: #eaeef4;
   --primary-deep: #144a43;
-  --clay-deep: #a85f27;
+  --clay-deep: #965021;
   --sage-deep: #2f6b45;
   --slate-deep: #4a5e75;
   --bg-field: #efe8dc;
@@ -717,6 +720,7 @@ export const theme = {
     primary: '#2a9d8f',
     primaryHover: '#249185',
     primaryLight: '#e0f3f0',
+    primaryDark: '#1a6f64',
     clay: '#c2783a',
     clayLight: '#f5ece0',
     sage: '#3d9960',
@@ -725,7 +729,7 @@ export const theme = {
     slateLight: '#e8edf3',
     ink: '#1a1a1a',
     inkSecondary: '#444444',
-    inkMuted: '#777777',
+    inkMuted: '#6b6459',
     inkSubtle: '#aaaaaa',
     bgPage: '#faf8f4',
     bgWarm: '#f5efe6',
@@ -743,7 +747,7 @@ export const theme = {
     sageRow: '#e6f1e9',
     slateRow: '#eaeef4',
     primaryDeep: '#144a43',
-    clayDeep: '#a85f27',
+    clayDeep: '#965021',
     sageDeep: '#2f6b45',
     slateDeep: '#4a5e75',
     bgField: '#efe8dc',

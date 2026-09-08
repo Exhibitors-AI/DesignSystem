@@ -11,7 +11,7 @@
   --primary: #2a9d8f;
   --primary-hover: #249185;
   --primary-light: #e0f3f0;
-  --primary-dark: #1e7a6f;
+  --primary-dark: #1a6f64;
 
   /* ------- Colors: Classification Accents ------- */
   --clay: #c2783a;
@@ -24,7 +24,7 @@
   /* ------- Colors: Neutrals (text) ------- */
   --ink: #1a1a1a;
   --ink-secondary: #444444;
-  --ink-muted: #777777;
+  --ink-muted: #6b6459;
   --ink-subtle: #aaaaaa;
 
   /* ------- Colors: Backgrounds ------- */
@@ -68,7 +68,7 @@
      Darker, same-hue text that meets contrast on the *-light / *-row tints.
      Pair --clay-deep with --clay-light, etc. */
   --primary-deep: #144a43;
-  --clay-deep: #a85f27;
+  --clay-deep: #965021;
   --sage-deep: #2f6b45;
   --slate-deep: #4a5e75;
 
